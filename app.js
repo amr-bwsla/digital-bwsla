@@ -1,14 +1,9 @@
 const toggle=document.querySelector('.menu-toggle');
-const motionButton=document.querySelector('.motion-toggle');
 const marquee=document.querySelector('.logo-marquee');
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-function setLogoMotion(paused){marquee?.classList.toggle('paused',paused);if(motionButton){motionButton.setAttribute('aria-pressed',String(paused));motionButton.textContent=paused?'تشغيل حركة الشعارات':'إيقاف حركة الشعارات';}}
+function setLogoMotion(paused){marquee?.classList.toggle('paused',paused);}
 setLogoMotion(reducedMotion.matches);
-motionButton?.addEventListener('click',()=>setLogoMotion(motionButton.getAttribute('aria-pressed')!=='true'));
 reducedMotion.addEventListener('change',e=>setLogoMotion(e.matches));
-const extraInput=document.querySelector('#payroll-extra');
-const money=new Intl.NumberFormat('en-US');
-extraInput?.addEventListener('input',()=>{const extra=Number(extraInput.value);document.querySelector('#extra-output').textContent=money.format(extra)+' ج.م';document.querySelector('#extra-line').textContent=money.format(extra);document.querySelector('#gross-total').textContent=money.format(11500+extra);document.querySelector('#net-total').textContent=new Intl.NumberFormat('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).format(9812.5+extra);if(document.querySelector('[data-pay="overtime"][aria-pressed="true"]'))showPayDetail('overtime');});
 const payDetails={
 base:['فترة استحقاق الراتب الأساسي','01–30 سبتمبر 2026 • استحقاق 30 من 30 يومًا.','10,000 × 30 ÷ 30 = 10,000 ج.م. الخصومات معروضة بشكل منفصل.'],
 allowance:['البدلات الثابتة','بدل انتقال: 1,000 ج.م • بدل اتصال: 500 ج.م.','الإجمالي 1,500 ج.م في هذا المثال.'],
@@ -16,8 +11,25 @@ absence:['تفاصيل الغياب • يومان','08 سبتمبر: يوم غ�
 unpaid:['إجازة بدون أجر • يوم واحد','15 سبتمبر: إجازة بدون أجر معتمدة.','10,000 ÷ 30 × يوم = 333.33 ج.م بعد التقريب.'],
 late:['تفاصيل التأخير • 120 دقيقة','03 سبتمبر: 30 دقيقة • 10 سبتمبر: 45 دقيقة • 24 سبتمبر: 45 دقيقة.','120 ÷ 60 × 62.50 = 125 ج.م. سعر الساعة افتراضي لهذا العرض.'],
 early:['انصراف مبكر • 60 دقيقة','17 سبتمبر: انصراف مبكر لمدة 60 دقيقة.','60 ÷ 60 × 62.50 = 62.50 ج.م وفق سياسة المثال.'],
+overtime:['تفاصيل الوقت الإضافي • 10 ساعات','06 و20 سبتمبر: حضور 09:00 وانصراف 22:00؛ 5 ساعات إضافي في كل يوم.','10 ساعات × 100 ج.م = 1,000 ج.م وفق سياسة المثال.'],
 advance:['قسط السلفة','قسط سبتمبر: 500 ج.م • مثال لجدولة سلفة على أقساط.','هذا البند مستقل عن خصومات الحضور.']};
-function showPayDetail(id){let parts=payDetails[id];if(id==='overtime'){const extra=Number(extraInput.value);parts=['تفاصيل الوقت الإضافي',`06 سبتمبر: ${money.format(extra/200)} ساعة • 20 سبتمبر: ${money.format(extra/200)} ساعة.`,`${money.format(extra/100)} ساعة × 100 ج.م = ${money.format(extra)} ج.م. يتغير عدد الساعات مع المثال التفاعلي.`];}if(!parts)return;const panel=document.querySelector('#pay-detail');panel.replaceChildren();for(const [i,text] of parts.entries()){const el=document.createElement(i===0?'strong':'p');el.textContent=text;panel.append(el);}document.querySelectorAll('[data-pay]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pay===id)));}
+function showPayDetail(id){
+  const parts=payDetails[id];
+  if(!parts)return;
+  for(const selector of ['#pay-detail','#attendance-explanation']){
+    const panel=document.querySelector(selector);
+    if(!panel)continue;
+    panel.replaceChildren(...parts.map((text,i)=>{const el=document.createElement(i===0?'strong':'p');el.textContent=text;return el;}));
+  }
+  document.querySelectorAll('[data-pay]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pay===id)));
+  document.querySelectorAll('[data-attendance-impact]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.attendanceImpact===id)));
+  document.querySelectorAll('[data-attendance-kind]').forEach(row=>row.classList.toggle('linked-day',row.dataset.attendanceKind===id));
+}
+document.querySelectorAll('[data-attendance-impact]').forEach(button=>button.addEventListener('click',()=>showPayDetail(button.dataset.attendanceImpact)));
+document.querySelectorAll('[data-attendance-filter]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('[data-attendance-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+  document.querySelectorAll('[data-attendance-kind]').forEach(row=>row.hidden=button.dataset.attendanceFilter==='events'&&['rest','regular'].includes(row.dataset.attendanceKind));
+}));
 document.querySelectorAll('[data-pay]').forEach(button=>{['pointerenter','focus','click'].forEach(event=>button.addEventListener(event,()=>showPayDetail(button.dataset.pay)));});
 marquee?.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')setLogoMotion(!marquee.classList.contains('paused'));});
 const nav=document.querySelector('.nav-links');

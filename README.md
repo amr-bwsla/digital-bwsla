@@ -31,3 +31,9 @@ The original site is preserved in the initial Git commit. The homepage now leads
 Verified: reproducible generation, local file references across nine pages, JavaScript syntax, homepage at desktop / 768 / 390 / 320 pixel widths, mobile navigation and Escape, payroll calculations and detail interaction, and project-specific contact fields. No live WhatsApp request was sent.
 
 Pending before launch: approved customer classifications and case-study content, additional real product screenshots, decision on lead storage and content management, production SEO URLs/social image, and hosting/deployment setup. The site remains a local static marketing frontend.
+
+## Company-wide positioning and attendance review
+
+The hero has been restored to the original company-wide message at the owner’s request. `company-purpose.cjs` contains proposed vision, mission, and values copy, shared by Home and About. `attendance-demo.cjs` generates all 30 days of the fictional September 2026 employee record; its events reconcile with the existing payslip. The overtime slider and ribbon pause button have been removed. Ribbon images load eagerly, with larger cards and a full static gallery available under the ribbon. All 40 ribbon assets were confirmed loaded in-browser. The monthly record and payslip highlight related entries in both directions.
+
+Verified: 30 calendar days = 19 attended + 2 absent + 1 unpaid leave + 8 rest days; 120 late minutes, 60 early-leave minutes, 10 overtime hours; net salary 10,812.50 EGP. These are fictional presentation policies, not legal/payroll guidance.

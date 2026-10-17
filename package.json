@@ -5,6 +5,6 @@
   "scripts": {
     "build": "node build.cjs",
     "start": "node server.cjs",
-    "check": "node --check build.cjs && node --check app.js && node --check server.cjs"
+    "check": "node --check build.cjs && node --check app.js && node --check server.cjs && node --check attendance-demo.cjs && node --check company-purpose.cjs"
   }
 }
