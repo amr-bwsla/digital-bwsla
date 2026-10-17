@@ -23,13 +23,8 @@ function showPayDetail(id){
   }
   document.querySelectorAll('[data-pay]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pay===id)));
   document.querySelectorAll('[data-attendance-impact]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.attendanceImpact===id)));
-  document.querySelectorAll('[data-attendance-kind]').forEach(row=>row.classList.toggle('linked-day',row.dataset.attendanceKind===id));
 }
 document.querySelectorAll('[data-attendance-impact]').forEach(button=>button.addEventListener('click',()=>showPayDetail(button.dataset.attendanceImpact)));
-document.querySelectorAll('[data-attendance-filter]').forEach(button=>button.addEventListener('click',()=>{
-  document.querySelectorAll('[data-attendance-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-  document.querySelectorAll('[data-attendance-kind]').forEach(row=>row.hidden=button.dataset.attendanceFilter==='events'&&['rest','regular'].includes(row.dataset.attendanceKind));
-}));
 document.querySelectorAll('[data-pay]').forEach(button=>{['pointerenter','focus','click'].forEach(event=>button.addEventListener(event,()=>showPayDetail(button.dataset.pay)));});
 marquee?.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')setLogoMotion(!marquee.classList.contains('paused'));});
 const nav=document.querySelector('.nav-links');
