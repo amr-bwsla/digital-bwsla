@@ -19,7 +19,7 @@ early:['انصراف مبكر • 60 دقيقة','17 سبتمبر: انصراف 
 advance:['قسط السلفة','قسط سبتمبر: 500 ج.م • مثال لجدولة سلفة على أقساط.','هذا البند مستقل عن خصومات الحضور.']};
 function showPayDetail(id){let parts=payDetails[id];if(id==='overtime'){const extra=Number(extraInput.value);parts=['تفاصيل الوقت الإضافي',`06 سبتمبر: ${money.format(extra/200)} ساعة • 20 سبتمبر: ${money.format(extra/200)} ساعة.`,`${money.format(extra/100)} ساعة × 100 ج.م = ${money.format(extra)} ج.م. يتغير عدد الساعات مع المثال التفاعلي.`];}if(!parts)return;const panel=document.querySelector('#pay-detail');panel.replaceChildren();for(const [i,text] of parts.entries()){const el=document.createElement(i===0?'strong':'p');el.textContent=text;panel.append(el);}document.querySelectorAll('[data-pay]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pay===id)));}
 document.querySelectorAll('[data-pay]').forEach(button=>{['pointerenter','focus','click'].forEach(event=>button.addEventListener(event,()=>showPayDetail(button.dataset.pay)));});
-marquee?.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')marquee.classList.toggle('paused');});
+marquee?.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')setLogoMotion(!marquee.classList.contains('paused'));});
 const nav=document.querySelector('.nav-links');
 toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);});
 nav?.addEventListener('click',e=>{if(e.target.closest('a')){toggle.setAttribute('aria-expanded','false');nav.classList.remove('open');}});
@@ -29,7 +29,25 @@ const serviceNames={hr:'ديمو بوصلة HR',care:'ديمو بوصلة Care',
 const pageProduct=new URLSearchParams(location.search).get('product')||location.pathname.split('/').pop().replace('.html','');
 const serviceSelect=document.querySelector('select[name="service"]');
 if(serviceSelect&&serviceNames[pageProduct])serviceSelect.value=serviceNames[pageProduct];
+const scopeSelect=document.querySelector('select[name="size"]');
+const scopeLabel=document.querySelector('#scope-label');
+const scopes={
+  hr:['حجم الفريق',['أقل من 25 موظفًا','25–100 موظف','101–500 موظف','أكثر من 500 موظف']],
+  care:['نوع المنشأة',['عيادة أو مركز طبي','مستشفى','معمل تحاليل','مركز أشعة']],
+  go:['عدد الفروع',['فرع واحد','2–5 فروع','أكثر من 5 فروع']],
+  it:['عدد الأجهزة التقريبي',['أقل من 10 أجهزة','10–25 جهازًا','26–50 جهازًا','أكثر من 50 جهازًا']],
+  studio:['نوع المشروع',['موقع شركة','متجر إلكتروني','تطوير موقع قائم','أحتاج مساعدة في الاختيار']]
+};
+function updateScope(){
+  if(!scopeSelect||!scopeLabel)return;
+  const id=Object.keys(serviceNames).find(key=>serviceNames[key]===serviceSelect.value)||'hr';
+  const [label,options]=scopes[id];
+  scopeLabel.textContent=label;
+  scopeSelect.replaceChildren(...options.map(text=>new Option(text,text)));
+}
+serviceSelect?.addEventListener('change',updateScope);
+updateScope();
 const demoTabs=[...document.querySelectorAll('[data-demo]')];
 demoTabs.forEach((button,index)=>button.addEventListener('keydown',e=>{let target;if(e.key==='ArrowLeft')target=(index+1)%demoTabs.length;if(e.key==='ArrowRight')target=(index-1+demoTabs.length)%demoTabs.length;if(e.key==='Home')target=0;if(e.key==='End')target=demoTabs.length-1;if(target!==undefined){e.preventDefault();demoTabs[target].focus();demoTabs[target].click();}}));
 document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>{const data=datasets[button.dataset.demo];document.querySelectorAll('[data-demo]').forEach(b=>b.setAttribute('aria-selected',String(b===button)));document.querySelectorAll('.metric').forEach((m,i)=>{m.querySelector('b').textContent=data.values[i];m.querySelector('small').textContent=data.labels[i];});document.querySelectorAll('.bar').forEach((bar,i)=>bar.style.height=data.bars[i]+'%');document.querySelector('#chart-title').textContent=data.title;}));
-document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const data=new FormData(form);const text=`مرحبًا بوصلة رقمية، أرغب في ${data.get('service')}.\nالاسم: ${data.get('name')}\nالشركة: ${data.get('company')}\nحجم الفريق: ${data.get('size')}\nالتفاصيل: ${data.get('message')||'مناقشة الاحتياج في الديمو'}`;window.open('https://wa.me/201280571375?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');document.querySelector('#form-status').textContent='تم فتح واتساب بمسودة الطلب. راجع الرسالة واضغط إرسال هناك لإتمام التواصل.';});
+document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const data=new FormData(form);const text=`مرحبًا بوصلة رقمية، أرغب في ${data.get('service')}.\nالاسم: ${data.get('name')}\nالشركة: ${data.get('company')}\n${scopeLabel.textContent}: ${data.get('size')}\nالتفاصيل: ${data.get('message')||'مناقشة الاحتياج في الديمو'}`;window.open('https://wa.me/201280571375?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');const status=document.querySelector('#form-status');status.textContent='راجع الرسالة واضغط إرسال في واتساب لإتمام التواصل. لو لم تفتح النافذة، ';const retry=document.createElement('a');retry.href='https://wa.me/201280571375?text='+encodeURIComponent(text);retry.target='_blank';retry.rel='noopener noreferrer';retry.textContent='افتح مسودة طلبك من هنا';status.append(retry);});
