@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="22 0 96 113" width="960" height="1130">
+  <defs>
+    <linearGradient id="care_b_body_grad" x1="32.0" y1="12.0" x2="102.0" y2="100.0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4172C2" />
+      <stop offset="50%" stop-color="#4F88C6" />
+      <stop offset="100%" stop-color="#64A8CA" />
+    </linearGradient>
+    <linearGradient id="care_arrow_tail_grad" x1="35.0" y1="106.0" x2="66.5" y2="60.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#148686" />
+      <stop offset="52%" stop-color="#229B96" />
+      <stop offset="100%" stop-color="#7EC9C2" />
+    </linearGradient>
+    <linearGradient id="care_arrow_left_wing_grad" x1="58.0" y1="58.0" x2="88.0" y2="40.0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#71C8C2" />
+      <stop offset="100%" stop-color="#8CD0D1" />
+    </linearGradient>
+    <linearGradient id="care_arrow_right_wing_grad" x1="69.0" y1="68.0" x2="88.0" y2="42.0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#239E99" />
+      <stop offset="60%" stop-color="#28A09E" />
+      <stop offset="100%" stop-color="#3AA4A0" />
+    </linearGradient>
+  </defs>
+  <g id="Bwsla_Care_Icon">
+    <path id="B_Body" d="M 26.850 92.505 L 26.850 13.370 C 26.850 8.261 30.991 4.120 36.100 4.120 L 82.450 4.120 C 98.300 4.120 111.230 15.770 111.230 30.780 C 111.230 40.200 106.200 49.300 96.650 53.550 C 108.300 57.400 114.220 67.800 114.220 80.150 C 114.220 96.450 100.100 108.920 81.400 108.920 L 47.893 108.920 C 50.743 97.572 55.885 86.928 63.001 77.641 C 71.289 80.872 80.714 78.072 85.892 70.839 C 91.071 63.606 90.686 53.782 84.957 46.977 C 79.227 40.172 69.612 38.118 61.603 41.989 C 53.593 45.859 49.228 54.669 51.000 63.386 C 41.235 71.532 33.049 81.402 26.850 92.505 Z" fill="url(#care_b_body_grad)" />
+    <path id="Arrow_Tail" d="M 45.776 108.920 L 33.800 108.920 C 29.000 108.920 27.901 105.817 29.300 102.500 C 36.620 85.151 49.192 70.532 65.250 60.699 L 66.000 61.100 L 68.791 68.455 C 57.199 79.302 49.174 93.413 45.776 108.920 Z" fill="url(#care_arrow_tail_grad)" />
+    <path id="Arrow_Left_Wing" d="M 55.450 55.450 L 90.550 38.900 L 66.000 61.100 Z" fill="url(#care_arrow_left_wing_grad)" />
+    <path id="Arrow_Right_Wing" d="M 66.000 61.100 L 90.550 38.900 L 71.350 75.200 Z" fill="url(#care_arrow_right_wing_grad)" />
+  </g>
+</svg>
