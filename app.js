@@ -58,3 +58,41 @@ const demoTabs=[...document.querySelectorAll('[data-demo]')];
 demoTabs.forEach((button,index)=>button.addEventListener('keydown',e=>{let target;if(e.key==='ArrowLeft')target=(index+1)%demoTabs.length;if(e.key==='ArrowRight')target=(index-1+demoTabs.length)%demoTabs.length;if(e.key==='Home')target=0;if(e.key==='End')target=demoTabs.length-1;if(target!==undefined){e.preventDefault();demoTabs[target].focus();demoTabs[target].click();}}));
 document.querySelectorAll('[data-demo]').forEach(button=>button.addEventListener('click',()=>{const data=datasets[button.dataset.demo];document.querySelectorAll('[data-demo]').forEach(b=>b.setAttribute('aria-selected',String(b===button)));document.querySelectorAll('.metric').forEach((m,i)=>{m.querySelector('b').textContent=data.values[i];m.querySelector('small').textContent=data.labels[i];});document.querySelectorAll('.bar').forEach((bar,i)=>bar.style.height=data.bars[i]+'%');document.querySelector('#chart-title').textContent=data.title;}));
 document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const data=new FormData(form);const text=`مرحبًا بوصلة رقمية، أرغب في ${data.get('service')}.\nالاسم: ${data.get('name')}\nالشركة: ${data.get('company')}\n${scopeLabel.textContent}: ${data.get('size')}\nالتفاصيل: ${data.get('message')||'مناقشة الاحتياج في الديمو'}`;window.open('https://wa.me/201280571375?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');const status=document.querySelector('#form-status');status.textContent='راجع الرسالة واضغط إرسال في واتساب لإتمام التواصل. لو لم تفتح النافذة، ';const retry=document.createElement('a');retry.href='https://wa.me/201280571375?text='+encodeURIComponent(text);retry.target='_blank';retry.rel='noopener noreferrer';retry.textContent='افتح مسودة طلبك من هنا';status.append(retry);});
+
+// Animate once on entry; content remains visible if scripting or observation is unavailable.
+(function initScrollMotion(){
+  if(!('IntersectionObserver' in window)||reducedMotion.matches)return;
+  const selectors=[
+    '.hero-grid > div','.hr-layout > div','.section-head','.product-card','.service-row',
+    '.step','.payroll-intro','.shared-employee','.attendance-board','.payslip',
+    '.purpose-intro','.vision-panel','.mission-panel','.values-panel','.media-hero-copy',
+    '.editorial-photo','.media-story-copy','.care-app-preview','.service-gallery article',
+    '.detail-item','.detail-body > h2','.detail-body > p','.detail-body > details',
+    '.contact > div','.contact > form','.client-heading','.logo-marquee',
+    '.workflow-break .wrap > div','.workflow-break li','.footer-top > div','.footer-bottom',
+    'main > section > h1','main > section > .lead'
+  ].join(',');
+  const candidates=[...document.querySelectorAll(selectors)];
+  const selected=new Set(candidates);
+  const targets=candidates.filter(el=>{for(let p=el.parentElement;p;p=p.parentElement){if(selected.has(p))return false;}return true;});
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+      const el=entry.target;
+      observer.unobserve(el);
+      if(reducedMotion.matches)return;
+      const siblings=el.parentElement?Array.from(el.parentElement.children).filter(child=>selected.has(child)):[];
+      el.style.setProperty('--reveal-delay',Math.min(Math.max(siblings.indexOf(el),0)*65,195)+'ms');
+      el.classList.add('scroll-reveal');
+      const finish=()=>{el.classList.remove('scroll-reveal');el.style.removeProperty('--reveal-delay');};
+      el.addEventListener('animationend',event=>{if(event.target===el)finish();},{once:true});
+      window.setTimeout(finish,1000);
+    });
+  },{threshold:0,rootMargin:'0px 0px -24px 0px'});
+  targets.forEach(el=>observer.observe(el));
+  reducedMotion.addEventListener('change',event=>{
+    if(!event.matches)return;
+    observer.disconnect();
+    targets.forEach(el=>{el.classList.remove('scroll-reveal');el.style.removeProperty('--reveal-delay');});
+  });
+})();
