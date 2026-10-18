@@ -81,8 +81,8 @@
 .product-mark{direction:ltr;justify-content:flex-end}.product-mark>b{direction:ltr;unicode-bidi:isolate}.hero-art .float{direction:ltr}.hero-art .float>div{direction:rtl;text-align:right}.hero-art .float b{direction:ltr;unicode-bidi:isolate}
 /* Shared scroll entrances preserve existing transforms and never hide content at rest. */
 @media(prefers-reduced-motion:no-preference){
-  .scroll-reveal{animation:content-arrive .65s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) both}
-  @keyframes content-arrive{from{opacity:0;translate:0 22px}to{opacity:1;translate:0 0}}
+  .scroll-reveal{animation:content-arrive .55s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) both}
+  @keyframes content-arrive{from{opacity:0;translate:0 16px}to{opacity:1;translate:0 0}}
   .hero-art .compass{animation:compass-hover 7s ease-in-out infinite}
   .hero-art .compass>img{transform-origin:50% 60%;animation:compass-bearing 7s cubic-bezier(.45,0,.55,1) infinite}
   .hero-art .compass:after{animation:compass-halo 7s ease-in-out infinite}
@@ -260,3 +260,5 @@ html[lang=en] .nav .brand-digital{color:#396b9b}
 /* Product activation, training and onboarding information. */
 #getting-started .detail-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 @media(max-width:760px){#getting-started .detail-list{grid-template-columns:1fr}}
+
+

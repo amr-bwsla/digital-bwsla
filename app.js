@@ -76,7 +76,7 @@ document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDef
     '.hero-grid > div','.hr-layout > div','.section-head','.product-card','.service-row',
     '.step','.payroll-intro','.shared-employee','.attendance-board','.payslip',
     '.purpose-intro','.vision-panel','.mission-panel','.values-panel','.media-hero-copy',
-    '.editorial-photo','.media-story-copy','.care-app-preview','.service-gallery article',
+    '.editorial-photo','.media-story-copy','.care-app-preview','.service-gallery figure',
     '.detail-item','.detail-body > h2','.detail-body > p','.detail-body > details',
     '.contact > div','.contact > form','.client-heading','.logo-marquee',
     '.workflow-break .wrap > div','.workflow-break li','.footer-top > div','.footer-bottom',
@@ -92,13 +92,13 @@ document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDef
       observer.unobserve(el);
       if(reducedMotion.matches)return;
       const siblings=el.parentElement?Array.from(el.parentElement.children).filter(child=>selected.has(child)):[];
-      el.style.setProperty('--reveal-delay',Math.min(Math.max(siblings.indexOf(el),0)*65,195)+'ms');
+      el.style.setProperty('--reveal-delay',Math.min(Math.max(siblings.indexOf(el),0)*70,140)+'ms');
       el.classList.add('scroll-reveal');
       const finish=()=>{el.classList.remove('scroll-reveal');el.style.removeProperty('--reveal-delay');};
       el.addEventListener('animationend',event=>{if(event.target===el)finish();},{once:true});
-      window.setTimeout(finish,1000);
+      window.setTimeout(finish,900);
     });
-  },{threshold:0,rootMargin:'0px 0px -24px 0px'});
+  },{threshold:0,rootMargin:'0px 0px -16px 0px'});
   targets.forEach(el=>observer.observe(el));
   reducedMotion.addEventListener('change',event=>{
     if(!event.matches)return;
