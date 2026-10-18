@@ -1,5 +1,7 @@
 // Editorial imagery is illustrative; actual product screenshots stay separate.
 const captions = {
+  'focused-work': 'مساحة عمل هادئة لمراجعة الأعمال',
+  'clinic-professional': 'فريق طبي يتابع إدارة العيادة في بيئة عمل احترافية',
   'hr-team': 'فريق عمل يتابع بيانات الموارد البشرية',
   'web-studio': 'جلسة عمل لتصميم تجربة موقع إلكتروني',
   'it-support': 'تعاون فريق الدعم التقني داخل بيئة العمل',
@@ -13,10 +15,11 @@ const captions = {
   'clinic-welcome': 'تواصل فريق الاستقبال مع أحد زوار العيادة'
 };
 function photo(name, eager=false) {
+  if(name==='compass-workspace') return `<img src="assets/media/compass-workspace-emblem-1280.webp" srcset="assets/media/compass-workspace-emblem-640.webp 640w, assets/media/compass-workspace-emblem-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="720" alt="شعار بوصلة رقمية على اللابتوب في مساحة عمل" loading="${eager?'eager':'lazy'}" decoding="async">`;
   const portrait=['hr-team','hr-mobile-concept'].includes(name);
   return `<img src="assets/media/${name}-1280.webp" srcset="assets/media/${name}-640.webp 640w, assets/media/${name}-1280.webp ${portrait?'1122':'1280'}w" sizes="(max-width: 760px) 92vw, 46vw" width="${portrait?1122:1280}" height="${portrait?1402:name==='support-desk'?853:720}" alt="${captions[name]}" loading="${eager?'eager':'lazy'}" decoding="async">`;
 }
-function figure(name,eager=false){return `<figure class="editorial-photo">${photo(name,eager)}<figcaption>تصوّر بصري لبيئة العمل</figcaption></figure>`;}
+function figure(name,eager=false){return `<figure class="editorial-photo">${photo(name,eager)}<figcaption>${name==='focused-work'?'مساحة للتركيز على ما يهم.':'تصوّر بصري لبيئة العمل'}</figcaption></figure>`;}
 function story(name,eyebrow,title,copy,link,label){return `<section class="wrap media-story"><div class="media-story-copy"><span class="eyebrow">${eyebrow}</span><h2>${title}</h2><p>${copy}</p>${link?`<a class="text-link" href="${link}">${label} ↖</a>`:''}</div>${figure(name)}</section>`;}
 module.exports=function(file,body){
   const heroes={'hr.html':'hr-team','care.html':'clinic-care','go.html':'pos-checkout','it.html':'it-support','studio.html':'web-studio','about.html':'compass-workspace'};
@@ -29,12 +32,13 @@ module.exports=function(file,body){
   if(file==='index.html'){
     // Give each product and service a contextual photo without replacing its identity.
     body=body.replaceAll('<article class="product-card">','<article class="product-card product-card-photo">');
-    body=body.replace('<article class="product-card product-card-photo">','<article class="product-card product-card-photo">'+photo('clinic-care'));
+    body=body.replace('<article class="product-card product-card-photo">','<article class="product-card product-card-photo">'+photo('clinic-professional'));
     const go='<article class="product-card product-card-photo"><div><span class="tag">للمتاجر';
     body=body.replace(go,'<article class="product-card product-card-photo">'+photo('pos-checkout')+'<div><span class="tag">للمتاجر');
-    body=body.replace('<section class="section services"',story('business-team','صورة أوضح. قرار أسهل.','وقت أقل في التفاصيل.<br>ومساحة أكبر لفريقك.','من تنظيم بيانات الموظفين إلى متابعة نشاطك، اختار الأدوات التي تساعدك على رؤية الصورة كاملة.','contact.html','خلّينا نفهم احتياجك')+'<section class="section services"');
+    body=body.replace('<section class="section services"',story('focused-work','صورة أوضح. قرار أسهل.','وقت أقل في التفاصيل.<br>ومساحة أكبر لفريقك.','من تنظيم بيانات الموظفين إلى متابعة نشاطك، اختار الأدوات التي تساعدك على رؤية الصورة كاملة.','contact.html','خلّينا نفهم احتياجك')+'<section class="section services"');
   }
-  const stories={    'about.html':['cairo-workspace','من القاهرة، لطموحك','اتجاه واضح.<br>في كل خطوة رقمية.','نفهم طبيعة نشاطك، ونربط احتياجك بالبرنامج أو الخدمة المناسبة. البداية حوار، والهدف تجربة تخدم شغلك.','contact.html','ابدأ الحديث']
+  const stories={
+    'about.html':['cairo-workspace','من القاهرة، لطموحك','اتجاه واضح.<br>في كل خطوة رقمية.','نفهم طبيعة نشاطك، ونربط احتياجك بالبرنامج أو الخدمة المناسبة. البداية حوار، والهدف تجربة تخدم شغلك.','contact.html','ابدأ الحديث']
   };
   if(stories[file]) {
     const marker='<section class="wrap contact"';
@@ -42,7 +46,7 @@ module.exports=function(file,body){
   }
   if(file==='hr.html'){
     const appSection=`<section class="wrap media-story care-app-story" id="hr-app"><div class="media-story-copy"><span class="eyebrow">من تطبيق بوصلة HR</span><h2>بوصلة HR.<br>في إيد فريقك.</h2><p>تابع الوردية، وسجّل حضورك، وراجع سجل الحضور من الموبايل. شاشة فعلية من التطبيق، وباقي تجربة الموظف متاحة للاستعراض أثناء الديمو.</p><a class="text-link" href="contact.html?product=hr">شوف التجربة في الديمو ↖</a></div><figure class="care-app-preview hr-app-visual"><div class="hr-device-stage"><div class="care-device hr-attendance-device"><div class="hr-screen-brand"><div class="hr-screen-logo"><img src="assets/brand/bwsla-hr-icon.svg" alt="" width="32" height="40"><strong lang="en" dir="ltr">Bwsla HR</strong></div><div class="hr-screen-employee" dir="rtl"><img src="assets/products/demo-employee.png" alt="صورة الموظف الافتراضي أحمد محمد علي" width="28" height="28"><div><strong>أحمد محمد علي</strong><small>موظف افتراضي</small></div></div></div><div class="hr-screen-crop"><img class="hr-actual-screen" src="assets/products/hr-attendance.png" alt="شاشة فعلية من تطبيق بوصلة HR تعرض الوردية وتسجيل الحضور والتحقق من الموقع وسجل الحضور" width="600" height="1320" loading="lazy" decoding="async"></div></div></div><figcaption>شاشة حضور فعلية من التطبيق</figcaption></figure></section>`;
-    body=body.replace('<section class="wrap contact"',appSection+'<section class="wrap contact"');
+    body=body.replace('</section>','</section>'+appSection);
   }
   if(file==='care.html'){
     const appSection=`<section class="wrap media-story care-app-story" id="care-app"><div class="media-story-copy"><span class="eyebrow">من تطبيق بوصلة Care</span><h2>تجربة المريض.<br>في إيده.</h2><p>المواعيد، نتائج التحاليل والأشعة، والسجلات الطبية؛ واجهة تجمع خدمات المريض وتسهّل الوصول إليها.</p><ul class="feature-list"><li><span>↖</span>حجز المواعيد ومتابعة الزيارات</li><li><span>↖</span>نتائج التحاليل والأشعة والوصفات</li><li><span>↖</span>الفواتير والإجازات المرضية</li></ul><a class="text-link" href="contact.html?product=care">اكتشف تجربة التطبيق في الديمو ↖</a></div><figure class="care-app-preview"><div class="care-device"><img src="assets/products/care-app-branded.webp" alt="شاشة من تطبيق بوصلة Care بعد تخصيص الهوية تعرض المواعيد وخدمات المريض ونتائج التحاليل والأشعة والسجلات الطبية" width="600" height="1320" loading="lazy" decoding="async"></div><figcaption>شاشة من التطبيق بعد تخصيص الاسم والشعار لبوصلة Care</figcaption></figure></section>`;

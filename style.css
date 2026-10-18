@@ -92,3 +92,171 @@
 }
 @media(prefers-reduced-motion:reduce){.scroll-reveal{animation:none!important;opacity:1!important;translate:none!important}}
 @media print{.scroll-reveal{animation:none!important;opacity:1!important;translate:none!important}}
+/* Full editorial photos must not inherit the product logo's height cap. */
+.product-card-photo>img:first-child{max-height:none;height:auto;aspect-ratio:auto;object-fit:contain}
+.header-socials{display:flex;align-items:center;gap:6px;margin-inline-start:auto}
+.social-link{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;transition:background .2s,color .2s}
+.social-link .contact-icon{color:inherit;width:16px;height:16px}
+.social-link:hover{background:var(--ink);color:white}
+.contact-details>.footer-contact{display:flex;align-items:center;gap:12px;direction:rtl;text-align:right;min-height:34px}
+.contact-details .contact-icon{color:var(--teal)}
+.contact-details bdi{overflow-wrap:anywhere;min-width:0}
+.purpose-section{background:linear-gradient(145deg,#edf3e9,var(--paper) 65%);border-block:1px solid #e0e8dc}
+.purpose-intro{grid-template-columns:1fr 1fr;align-items:center;margin-bottom:36px;gap:32px}
+.purpose-intro h2{font-size:clamp(32px,4vw,48px);line-height:1.5;margin:14px 0 0}
+.purpose-intro h2 em{font-style:normal;color:var(--teal)}
+.purpose-intro>p{max-width:360px;justify-self:end;font-size:16px;line-height:2;border-inline-start:2px solid #accbb5;padding-inline-start:22px}
+.purpose-editorial{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.purpose-editorial>.vision-panel,.purpose-editorial>.mission-panel{padding:clamp(24px,3vw,42px);border-radius:24px;min-height:0;margin:0;display:flex;flex-direction:column;justify-content:flex-start;position:relative;overflow:hidden}
+.purpose-editorial>.vision-panel{background:linear-gradient(140deg,#123b40,#1d5657);box-shadow:0 18px 40px #123b4010}
+.purpose-editorial>.mission-panel{background:#fffdf7;border:1px solid #dce5d6}
+.purpose-card-top{display:flex;align-items:center;gap:12px}
+.purpose-symbol{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:#ffffff12;border:1px solid #ffffff26;color:var(--lime)}
+.purpose-symbol svg,.value-icon svg{width:25px;height:25px}
+.mission-panel .purpose-symbol{background:#edf3e7;color:var(--teal);border-color:#dce8d6}
+.purpose-index{margin-inline-start:auto;font:14px Arial;opacity:.5;letter-spacing:2px}
+.purpose-editorial h3{font-size:clamp(27px,3vw,36px);line-height:1.6;margin:26px 0 16px}
+.purpose-editorial h3 br{display:block}
+.purpose-editorial p{font-size:14px;line-height:2.1;max-width:440px;margin:0 0 26px}
+.vision-panel p{color:#d0e2dc}
+.mission-panel p{color:var(--muted)}
+.purpose-line{display:flex;align-items:center;gap:12px;margin-top:auto;height:30px;opacity:.6}
+.purpose-line span{height:1px;flex:1;background:#b8d6c5}.purpose-line i{width:10px;height:10px;background:var(--lime);transform:rotate(45deg)}
+.mission-steps{display:flex;align-items:center;gap:18px;margin-top:auto;color:var(--teal);font-size:12px;font-weight:700}.mission-steps i{font-style:normal;color:#94b2a6}
+.purpose-section .values-panel{margin-top:36px;padding-top:28px;border-top:1px solid #d7e2d3}
+.values-heading{display:flex;align-items:center;gap:18px}.values-heading h3{font-size:20px;margin:0}
+.purpose-section .values-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:24px}
+.purpose-section .values-grid article{border:0;border-inline-start:1px solid #d1dece;padding:0 18px 0 0}
+.value-icon{color:var(--teal);display:block;margin-bottom:12px}
+.purpose-section .values-grid h4{margin:0;font-size:16px}.purpose-section .values-grid p{line-height:1.9;margin:6px 0 0}
+@media(max-width:1150px) and (min-width:761px){.nav-inner{gap:12px}.nav-links{gap:12px;font-size:12px}.nav .nav-cta{display:none}}
+@media(max-width:760px){.nav-inner{gap:10px}.header-socials{gap:6px}.purpose-intro{grid-template-columns:1fr;gap:12px}.purpose-intro>p{justify-self:start;max-width:100%;margin:0}.purpose-editorial{grid-template-columns:1fr;gap:18px}.purpose-editorial h3 br{display:none}.purpose-section .values-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.values-heading{align-items:flex-start;flex-direction:column;gap:6px}}
+@media(max-width:380px){.nav .brand strong{font-size:16px}.nav .brand small{font-size:7px;letter-spacing:1.5px}.nav .brand{gap:7px}.social-link{width:30px;height:30px}.menu-toggle{padding:6px 9px}}
+/* Balanced navigation with equal outer columns keeps links at the true center. */
+@media(min-width:761px){.nav-inner{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:20px}.nav-inner>.brand{justify-self:start}.nav-links{justify-self:center}.header-socials{justify-self:end;margin:0}.nav-inner>.menu-toggle{display:none}}
+@media(min-width:761px) and (max-width:960px){.nav-inner{gap:12px}.nav .brand strong{font-size:17px}.nav .brand small{font-size:7px;letter-spacing:1.5px}.nav .brand img{width:32px;height:40px}.nav .brand{gap:8px}.nav-links{gap:12px;font-size:12px}}
+.hero{padding-top:24px}.hero-top-action{display:flex;justify-content:flex-end;margin-bottom:24px}.hero-top-action .btn{font-size:12px;padding:8px 18px;border-radius:30px}
+/* A luminous compass scene gives the vision its own visual identity. */
+.purpose-editorial>.vision-panel{isolation:isolate;background:radial-gradient(ellipse at 10% 20%,#a7e7cf 0,transparent 50%),radial-gradient(ellipse at 75% 100%,#b4c9f1 0,transparent 62%),linear-gradient(135deg,#eef8df,#d9ede6 55%,#e1edf7);color:#123b40;border:1px solid #bbd7cc;box-shadow:0 20px 50px #2e777b17,inset 0 1px 0 #fff;border-radius:28px 28px 70px 28px}
+.vision-panel .purpose-card-top,.vision-panel h3,.vision-panel p,.vision-panel .purpose-line{position:relative;z-index:1}
+.vision-panel .purpose-card-top{margin-bottom:70px}.vision-panel .purpose-label{color:#176e70}.vision-panel .purpose-symbol{color:#176e70;background:#ffffff8a;border-color:#ffffffaa}.vision-panel p{color:#355e62!important;max-width:410px}.vision-panel h3{color:#103e49;text-shadow:0 1px 0 #ffffff80}.vision-panel .purpose-line span{background:#568f94}.vision-panel .purpose-line i{background:#208b98}
+.vision-atmosphere{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}.vision-atmosphere>img{position:absolute;width:86px;height:104px;object-fit:contain;top:48px;left:52px;filter:drop-shadow(0 14px 18px #36778c30);transform:rotate(-14deg)}
+.vision-orbit{position:absolute;width:280px;height:280px;left:-45px;top:-52px;border:1px solid #ffffffb0;border-radius:50%;box-shadow:0 0 0 24px #ffffff15,0 0 0 25px #ffffff70,0 0 0 62px #ffffff10,0 0 0 63px #ffffff60}
+.vision-orbit:after{content:'';position:absolute;inset:32px;border:1px dashed #5d9c9c60;border-radius:50%}.vision-star{position:absolute;top:40px;left:210px;width:12px;height:12px;background:#fff;transform:rotate(45deg);box-shadow:0 0 24px 10px #ffffff80}
+.purpose-editorial>.mission-panel{background:linear-gradient(145deg,#fffef9,#f1f4e8);border-radius:28px 28px 28px 70px;box-shadow:0 16px 40px #123b4008}
+@media(prefers-reduced-motion:no-preference){.vision-atmosphere>img{animation:vision-bearing 9s ease-in-out infinite}.vision-star{animation:vision-glow 5s ease-in-out infinite}@keyframes vision-bearing{50%{transform:translateY(-8px) rotate(2deg)}}@keyframes vision-glow{50%{opacity:.4;scale:.7}}}
+@media(max-width:760px){.hero-top-action{margin-bottom:18px}.vision-panel .purpose-card-top{margin-bottom:55px}.vision-atmosphere>img{width:68px;height:82px;left:36px}.vision-orbit{left:-75px;top:-70px}.vision-star{left:160px}.purpose-editorial>.vision-panel,.purpose-editorial>.mission-panel{border-radius:24px}}
+/* Compact identity cards, retaining the compass composition. */
+.purpose-editorial>.vision-panel,.purpose-editorial>.mission-panel{padding:26px 30px}
+.vision-panel .purpose-card-top{margin-bottom:30px}
+.purpose-editorial h3{font-size:clamp(25px,2.6vw,31px);line-height:1.5;margin:18px 0 12px}
+.purpose-editorial p{line-height:1.95;margin-bottom:16px;font-size:13px}
+.vision-atmosphere>img{width:60px;height:74px;top:40px;left:42px}
+.vision-orbit{width:210px;height:210px;left:-35px;top:-55px}
+.vision-star{left:155px;top:30px}
+.purpose-line{height:18px}.mission-steps{padding-top:12px}
+.header-socials{direction:ltr}
+.service-copy h3 bdi{display:inline-block;font-size:.7em;color:var(--teal);font-weight:600;margin-inline:8px}
+.back-to-top{position:fixed;right:22px;bottom:22px;z-index:19;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;border:1px solid #b7cfc3;background:var(--paper);color:var(--ink);box-shadow:0 6px 20px #123b4020;transition:background .2s,color .2s}
+.back-to-top[hidden]{display:none}.back-to-top svg{width:20px;height:20px}.back-to-top:hover{background:var(--ink);color:white}
+@media(max-width:760px){.purpose-editorial>.vision-panel,.purpose-editorial>.mission-panel{padding:22px}.vision-panel .purpose-card-top{margin-bottom:24px}.vision-atmosphere>img{left:26px;width:50px;height:62px}.back-to-top{right:16px;bottom:20px}}
+/* Light numbering on the vision card; retain the original unboxed style. */
+
+@media(prefers-reduced-motion:no-preference){
+  .back-to-top:not([hidden]) svg{animation:back-arrow-nudge 3.2s ease-in-out infinite}
+  .back-to-top:hover svg,.back-to-top:focus-visible svg{animation-play-state:paused}
+  @keyframes back-arrow-nudge{0%,65%,100%{transform:translateY(0)}78%{transform:translateY(-3px)}89%{transform:translateY(0)}}
+}
+/* Locale-aware navigation: three desktop zones, compact mobile controls. */
+.nav .nav-inner{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px;align-items:center}
+.nav-inner>.brand{justify-self:start;min-width:0}.nav .nav-links{justify-self:center;gap:20px;white-space:nowrap}.header-tools{display:flex;align-items:center;justify-self:end;gap:12px}.header-tools .header-socials{display:flex;margin:0;gap:6px}.language-switch{display:inline-flex;align-items:center;justify-content:center;flex:none;width:auto;min-width:64px;min-height:36px;margin:0;padding:5px 10px;border:1px solid #c3d1c6;border-radius:8px;color:var(--ink);font:600 12px/1.5 Cairo,Arial,sans-serif;white-space:nowrap}.language-switch:hover{background:#e7eee2}.nav .menu-toggle{display:none}
+html[dir=rtl] body{direction:rtl}html[dir=ltr] body{direction:ltr}body{text-align:start}
+.pay-item,.attendance-impacts button,.attendance-scroll button,.employee-meta,.field,.form-note,.pay-detail,.attendance-explanation{text-align:start}
+.footer .footer-contact,.contact-details>.footer-contact{direction:inherit;text-align:start}
+.hero-art .float>div{direction:inherit;text-align:start}
+html[lang=en] body{font-family:Arial,Helvetica,sans-serif;line-height:1.7}
+html[lang=en] h1,html[lang=en] h2,html[lang=en] h3{letter-spacing:-.025em}
+html[lang=en] .brand strong{font-size:22px;white-space:nowrap}html[lang=en] .brand small{letter-spacing:2px}
+html[lang=en] .hero h1{line-height:1.2;margin-bottom:25px}html[lang=en] .hero .lead{line-height:1.7}
+html[lang=en] .product-mark{justify-content:flex-start}html[lang=en] .hero-art .float>div{direction:ltr;text-align:left}
+html[lang=en] .wa-dialog{direction:ltr;text-align:left}html[lang=en] .wa-form textarea,html[lang=en] .wa-send{font-family:Arial,Helvetica,sans-serif}
+html[lang=en] .attendance-scroll th,html[lang=en] .attendance-scroll td{text-align:start}html[lang=en] .attendance-scroll td[dir=ltr]{text-align:center}
+html[lang=en] .detail-hero h1{line-height:1.25}html[lang=en] .hr-screen-employee{text-align:left}html[lang=en] .arrow{transform:scaleX(-1)}
+html[lang=en] .field input,html[lang=en] .field select,html[lang=en] .field textarea{direction:ltr;text-align:left}
+@media(min-width:761px) and (max-width:1100px){.nav .nav-inner{gap:16px}.nav .nav-links{gap:12px}.nav .nav-links a{font-size:12px}.header-tools .header-socials{display:none}.nav .brand strong,html[lang=en] .nav .brand strong{font-size:18px}}
+@media(max-width:760px){.nav .nav-inner{grid-template-columns:minmax(0,1fr) auto auto;height:77px;gap:10px}.nav .nav-links{display:none;position:absolute;inset-inline:0;top:77px;white-space:normal;text-align:start;justify-self:stretch}.nav .nav-links.open{display:flex}.nav .menu-toggle{display:block;width:40px;height:40px;padding:0;justify-self:end}.header-tools{gap:0}.header-tools .header-socials{display:none}.language-switch{min-width:58px;min-height:36px;padding:5px 8px;font-size:11px}.nav .brand strong,html[lang=en] .nav .brand strong{font-size:18px}.nav .brand small,html[lang=en] .nav .brand small{font-size:7px;letter-spacing:1.5px}.nav .brand img{width:32px;height:40px}.nav .brand{gap:8px}html[lang=en] .hero h1{font-size:clamp(32px,7.5vw,48px)}html[lang=en] .hero-art .float small{font-size:9px}}
+@media(max-width:360px){.nav .brand strong,html[lang=en] .nav .brand strong{font-size:15px}.nav .brand small{letter-spacing:1px}.nav .nav-inner{gap:7px}}
+html[lang=ar] .hero-art .float>div{direction:rtl;text-align:right}html[lang=en] .payslip .employee-meta dd{direction:ltr;text-align:left}html[lang=en] .benefit-group{direction:ltr}
+/* English brand lockup and balanced headline. */
+html[lang=en] .brand .brand-arabic,html[lang=en] .nav .brand .brand-arabic{font-family:Cairo,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0;line-height:1.7;text-align:left}
+html[lang=en] .hero-grid>div:first-child{container-type:inline-size}html[lang=en] .hero h1{font-size:clamp(28px,8cqi,48px);line-height:1.3}html[lang=en] .hero h1 em{font-size:clamp(21px,7.3cqi,44px);white-space:nowrap}
+/* Mirror decoration positions without reversing the brand mark itself. */
+html[lang=en] .vision-atmosphere{transform:scaleX(-1)}html[lang=en] .vision-atmosphere>img{scale:-1 1}
+html[lang=en] .purpose-editorial>.vision-panel{background:radial-gradient(ellipse at 90% 20%,#a7e7cf 0,transparent 50%),radial-gradient(ellipse at 25% 100%,#b4c9f1 0,transparent 62%),linear-gradient(225deg,#eef8df,#d9ede6 55%,#e1edf7);border-radius:28px 28px 28px 70px}html[lang=en] .mission-steps i{transform:scaleX(-1)}
+html[lang=en] #wa-launcher{left:auto;right:max(20px,env(safe-area-inset-right))}html[lang=en] .back-to-top{right:auto;left:22px}
+#hr-app{scroll-margin-top:105px}#hr-app .media-story-copy{align-self:center}
+@media(max-width:760px){html[lang=en] .purpose-editorial>.vision-panel{border-radius:24px}html[lang=en] .nav .brand .brand-arabic{font-size:10px}html[lang=en] .back-to-top{left:16px;right:auto}}
+@media(max-width:600px){html[lang=en] #wa-launcher{right:14px;left:auto}}
+/* English wordmark: match the blue logo identity with contrasting weights. */
+html[lang=en] .brand .brand-wordmark{font-family:Arial,Helvetica,sans-serif;letter-spacing:-.6px;line-height:1.3;color:#396b9b;font-weight:400}
+html[lang=en] .brand-digital{font-weight:400;color:#507696}html[lang=en] .brand-bwsla{font-weight:700;color:#396b9b}
+html[lang=en] .brand .brand-arabic{color:#607d8d;margin-top:3px}html[lang=en] .footer .brand-wordmark{font-size:26px}
+.brand-tagline{display:inline-block;color:#50718a;font-size:13px;font-weight:500;line-height:1.6;margin:3px 0 7px}
+/* Compact bilingual wordmark; scope footer colours to English only. */
+html[lang=en] .brand>span{display:flex;flex-direction:column;gap:0;justify-content:center}
+html[lang=en] .brand .brand-wordmark{line-height:1.1}
+html[lang=en] .brand .brand-arabic,html[lang=en] .nav .brand .brand-arabic{margin-top:0;line-height:1.3}
+html[lang=ar] .nav .brand strong{color:#396b9b}
+html[lang=ar] .nav .brand small{color:#607d8d}
+html[lang=en] .footer .brand .brand-wordmark,html[lang=en] .footer .brand-digital,html[lang=en] .footer .brand-bwsla{color:#e0ebe3}
+html[lang=en] .footer .brand .brand-arabic{color:#bfd2ca}
+html[lang=en] .footer .brand-tagline{color:#a7c0b9}
+/* Gentle concentric pulses behind the HR phone. */
+@media(prefers-reduced-motion:no-preference){
+  .phone-orbit,.phone-orbit:before,.phone-orbit:after{animation:phone-ring-pulse 2.8s ease-in-out infinite;transform-origin:center}
+  .phone-orbit:before{animation-delay:-.9s}
+  .phone-orbit:after{animation-delay:-1.8s}
+  @keyframes phone-ring-pulse{0%,100%{transform:scale(.97);opacity:.55}50%{transform:scale(1.035);opacity:1}}
+}
+/* Two-tone Arabic header wordmark, drawn from the logo palette. */
+html[lang=ar] .nav .brand-ar-bwsla{color:#111111}
+html[lang=ar] .nav .brand-ar-digital{color:#396b9b}
+/* Match the Arabic header: company name in black, Digital in blue. */
+html[lang=en] .nav .brand-bwsla{color:#111111}
+html[lang=en] .nav .brand-digital{color:#396b9b}
+/* White vision card with the existing animated compass decoration. */
+.purpose-editorial>.vision-panel,html[lang=en] .purpose-editorial>.vision-panel{background:#fff}
+
+.vision-panel .purpose-symbol{background:#f0f7f4;border-color:#d6e6df}
+.vision-orbit{border-color:#bfdfd7;background:radial-gradient(circle,#e4f4ee80,transparent 70%);box-shadow:0 0 0 24px #eaf6f34d,0 0 0 25px #cbe5dd80,0 0 0 62px #f0f8f54d,0 0 0 63px #dceee780}
+.vision-star{background:#91cfc7;box-shadow:0 0 24px 10px #b9e4dc40}
+
+.vision-panel .purpose-index{color:var(--ink);opacity:.5}
+/* Product cards: image, compact identity, copy and action in one clear column. */
+#products .products-grid{gap:24px;align-items:stretch}
+#products .product-card-photo{display:flex;flex-direction:column;gap:0;padding:0;border:1px solid #dce6df;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 10px 30px #123b4007;min-width:0}
+#products .product-card-photo>img:first-child{display:block;width:100%;height:auto;max-height:none;aspect-ratio:16/9;object-fit:contain;border-radius:0;margin:0}
+#products .product-card-photo>div{display:flex;flex-direction:column;align-items:flex-start;flex:1;padding:26px 28px}
+#products .product-card-photo .tag{font-size:11px;color:var(--muted);margin:0 0 14px}
+#products .product-card-heading{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+#products .product-card-heading img{width:34px;height:42px;max-height:none;object-fit:contain;flex-shrink:0}
+#products .product-card-heading h3{margin:0;font-size:26px;line-height:1.5}
+#products .product-card-photo p{font-size:14px;line-height:1.95;margin:0 0 24px;max-width:100%}
+#products .product-card-photo .text-link{margin-top:auto;padding:12px 0 0;border-bottom:0;border-top:1px solid #e1e9e3;width:100%;color:var(--teal)}
+#products .product-card-photo:last-child .text-link{color:#76528f}
+@media(max-width:760px){#products .product-card-photo>div{padding:22px}#products .products-grid{gap:24px}}
+/* Quiet product-colour accents stay behind the card copy. */
+#products .product-card-photo{--card-glow:8,124,121}
+#products .product-card-photo:last-child{--card-glow:118,82,143}
+#products .product-card-photo>div{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 0 100%,rgba(var(--card-glow),.055),transparent 65%),#fff}
+#products .product-card-photo>div:before{content:'';position:absolute;z-index:-1;pointer-events:none;inset-inline-end:-78px;top:28px;width:180px;height:180px;border:1px solid rgba(var(--card-glow),.09);border-radius:50%;box-shadow:0 0 0 24px rgba(var(--card-glow),.025),0 0 0 48px rgba(var(--card-glow),.015)}
+@media(prefers-reduced-motion:no-preference){
+  #products .product-card-photo{transition:box-shadow .35s,border-color .35s}
+  #products .product-card-photo>div:before{transition:transform .6s ease,opacity .6s ease}
+  #products .product-card-photo:hover,#products .product-card-photo:focus-within{border-color:rgba(var(--card-glow),.28);box-shadow:0 14px 32px rgba(var(--card-glow),.09)}
+  #products .product-card-photo:hover>div:before,#products .product-card-photo:focus-within>div:before{transform:scale(1.08) translateY(-5px)}
+}
+
+/* Product activation, training and onboarding information. */
+#getting-started .detail-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media(max-width:760px){#getting-started .detail-list{grid-template-columns:1fr}}

@@ -1,0 +1,62 @@
+Basic salary eligibility period
+01–30 September 2026 · Eligible for 30 of 30 days.
+10,000 × 30 ÷ 30 = EGP 10,000. Deductions are shown separately.
+Fixed allowances
+Transport: EGP 1,000 · Communication: EGP 500.
+Total: EGP 1,500 in this example.
+Absence details · Two days
+08 September: absent · 22 September: absent.
+10,000 ÷ 30 × 2 days = EGP 666.67 after rounding.
+Unpaid leave · One day
+15 September: approved unpaid leave.
+10,000 ÷ 30 × 1 day = EGP 333.33 after rounding.
+Lateness details · 120 minutes
+03 September: 30 minutes · 10 September: 45 minutes · 24 September: 45 minutes.
+120 ÷ 60 × 62.50 = EGP 125. The hourly rate is illustrative.
+Early departure · 60 minutes
+17 September: left 60 minutes early.
+60 ÷ 60 × 62.50 = EGP 62.50 under the example policy.
+Overtime details · 10 hours
+06 and 20 September: check-in 09:00, check-out 22:00; 5 overtime hours each day.
+10 hours × EGP 100 = EGP 1,000 under the example policy.
+Advance installment
+September installment: EGP 500 · Example of a scheduled advance repayment.
+This item is independent of attendance deductions.
+Employees
+Present today
+On leave
+Weekly attendance overview
+Payroll records
+Reviewed
+Under review
+Payroll review status
+Team goals
+Completed
+In progress
+Team goal progress
+Facility type
+Clinic or medical center
+Hospital
+Laboratory
+Radiology center
+Number of branches
+One branch
+2–5 branches
+More than 5 branches
+Approximate number of devices
+Fewer than 10 devices
+10–25 devices
+26–50 devices
+More than 50 devices
+Project type
+Corporate website
+Online store
+Improve an existing website
+I need help choosing
+Discuss requirements during the demo
+Review your message and press Send in WhatsApp. If no window opens, 
+open your request draft here
+Please enter your inquiry first.
+Hello Digital Bwsla,\n
+Review and send your message in WhatsApp. If no window opens, 
+open the conversation here

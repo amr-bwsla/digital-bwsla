@@ -1,5 +1,15 @@
 # Digital Bwsla — local website
 
+## Search and social metadata
+
+`site-config.cjs` defines the production origin (`https://digitalbwsla.com`) and page list. `npm run build` generates localized canonical URLs, reciprocal absolute ar/en/x-default links, Open Graph and large-image Twitter cards, Organization/WebSite/WebPage JSON-LD, `sitemap.xml`, and `robots.txt` after translation. Arabic home canonical is `/`; English home is `/en/index.html`. Other pages retain their `.html` URLs. The checked-in 1200×630 social JPEG is generated from the existing brand vector by `build-social-image.cjs` (optional regeneration requires Sharp).
+
+Before production, confirm this origin, serve HTTPS, redirect HTTP/www to it, and redirect `/index.html` to `/` while preserving query strings. Deploy only the 18 public HTML pages, browser JS/CSS, referenced public assets, sitemap and robots files; keep source scripts, original media, `review`, preview pages, `.git`, and `.preview-publish` out of the public deployment. The local server is for preview only. After deployment, verify public image/metadata URLs, connect the domain to Search Console and submit `/sitemap.xml`, then inspect social previews. Local checks do not verify public crawling, rankings, or third-party preview caches. No verification token, tracking code, or deployment is configured by these changes.
+
+## Client logo optimization
+
+The ribbon uses 40 resized WebP files in `assets/clients/optimized` (about 386 KB combined, down from 11.94 MB). Original uploads remain unchanged. `optimize-client-images.cjs` regenerates these files with Sharp available via Node module resolution (`NODE_PATH` may point to the bundled Node packages); rerun it after changing the source logos, then run `npm run build`. The images use native lazy loading and asynchronous decoding. An IntersectionObserver warms the whole moving ribbon within 800px of the viewport to avoid waiting for horizontally offscreen images as they enter the ribbon.
+
 Arabic-first static front end, prepared for later conversion to a custom WordPress theme.
 
 ## Preview

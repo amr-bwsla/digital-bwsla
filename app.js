@@ -1,5 +1,15 @@
 const toggle=document.querySelector('.menu-toggle');
 const marquee=document.querySelector('.logo-marquee');
+// Warm the entire moving ribbon only when the visitor approaches it, so
+// horizontally offscreen logos are ready before the animation reveals them.
+if(marquee&&'IntersectionObserver' in window){
+  const logoObserver=new IntersectionObserver(entries=>{
+    if(!entries.some(entry=>entry.isIntersecting))return;
+    marquee.querySelectorAll('img[loading="lazy"]').forEach(img=>{img.loading='eager';});
+    logoObserver.disconnect();
+  },{rootMargin:'800px 0px'});
+  logoObserver.observe(marquee);
+}
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 function setLogoMotion(paused){marquee?.classList.toggle('paused',paused);}
 setLogoMotion(reducedMotion.matches);
@@ -94,5 +104,19 @@ document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDef
     if(!event.matches)return;
     observer.disconnect();
     targets.forEach(el=>{el.classList.remove('scroll-reveal');el.style.removeProperty('--reveal-delay');});
+  });
+})();
+
+// Keep the return control out of the way until the visitor scrolls down.
+(()=>{
+  const button=document.querySelector('.back-to-top');
+  if(!button)return;
+  const update=()=>{button.hidden=window.scrollY<450;};
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+  button.addEventListener('click',()=>{
+    window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    const home=document.querySelector('.nav .brand');
+    if(home)home.focus({preventScroll:true});
   });
 })();
