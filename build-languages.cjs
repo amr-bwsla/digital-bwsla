@@ -1,4 +1,5 @@
 const fs=require('node:fs');
+const {assetVersion:ASSET_V}=require('./site-config.cjs');
 const source=JSON.parse(fs.readFileSync('translation-source.json','utf8'));
 const target=fs.readFileSync('translation-en.txt','utf8').trimEnd().split(/\r?\n/);
 const dynamic=JSON.parse(fs.readFileSync('dynamic-source.json','utf8'));
@@ -22,7 +23,7 @@ function controls(html,name,en){
  const button=`<a class="language-switch" href="${link}" lang="${en?'ar':'en'}" hreflang="${en?'ar':'en'}" aria-label="${en?'Switch to Arabic':'Switch to English'}">${en?'العربية':'English'}</a>`;
  html=html.replace('<div class="header-socials"','<div class="header-tools">'+button+'<div class="header-socials"');
  html=html.replace('</div><button class="menu-toggle"','</div></div><button class="menu-toggle"');
- return html.replace('</head>',`<link rel="alternate" hreflang="ar" href="${en?'../':''}${name}.html"><link rel="alternate" hreflang="en" href="${en?'':'en/'}${name}.html"><script src="${en?'../':''}language.js" defer></script></head>`);
+ return html.replace('</head>',`<link rel="alternate" hreflang="ar" href="${en?'../':''}${name}.html"><link rel="alternate" hreflang="en" href="${en?'':'en/'}${name}.html"><script src="${en?'../':''}language.js?v=${ASSET_V}" defer></script></head>`);
 }
 for(const name of pages){
  const ar=fs.readFileSync(name+'.html','utf8');
@@ -34,7 +35,8 @@ for(const name of pages){
  en=en.replace('<p>Your compass for digital transformation.<br>','<p><span class="brand-tagline">Your Compass for Digital Transformation.</span><br>');
  en=en.replace(/\b(src|href|srcset)="([^"]*)"/g,(all,attr,url)=>{
    if(url.startsWith('assets/')) return `${attr}="${url.split(',').map(part=>'../'+part.trim()).join(', ')}"`;
-   if(['style.css','whatsapp-widget.css'].includes(url))return `${attr}="../${url}"`;
+   const bare=url.split('?')[0];
+   if(['style.css','whatsapp-widget.css','whatsapp-widget.js'].includes(bare))return `${attr}="../${url}"`;
    return all;
  });
  fs.writeFileSync('en/'+name+'.html',controls(en,name,true));
