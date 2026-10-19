@@ -13,7 +13,7 @@
 @media(max-width:760px){.hero-art .float{padding:9px 15px}.hero-art .float b{font-size:14px}.hero-art .float small{font-size:10px}.hero-art .float.hr{min-width:180px}.client-heading{display:flex;align-items:center;gap:14px}.client-heading h2{font-size:25px}.client-heading small{max-width:210px;font-size:10px}.motion-toggle{font-size:10px;padding:8px 12px;flex-shrink:0}.client-logo{width:170px;height:112px;padding:12px}.client-logo img{height:85px}.all-logo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.all-logo-grid .client-logo{height:105px}.phone-stage{min-height:560px;margin-top:12px;overflow:hidden}.phone{width:230px}.phone-orbit{width:320px;height:320px}.phone-caption{bottom:15px;left:8px;padding:12px 16px}.payroll-story{grid-template-columns:1fr;gap:24px;margin-top:40px;padding-top:35px}.payroll-intro h3{font-size:28px}.payslip{padding:18px 15px}.payslip-columns{gap:16px}.salary-net{padding:14px 10px}.salary-net strong{font-size:25px}.salary-net>span{font-size:12px}.payslip dl div{font-size:11px}.payslip-heading h3{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.hero-art .float,.hero-art .compass,.orbit,.logo-track{animation:none!important}.logo-marquee{overflow-x:auto}.logo-group[aria-hidden=true]{display:none}.motion-toggle{display:none}}
 /* Compact logo ribbon and useful visitor messages */
-.client-logo{width:142px;height:84px;padding:12px;border-radius:8px}.client-logo img{height:60px;width:118px;max-width:100%;object-fit:contain}.client-logo.dark-logo{background:transparent;border-color:#dce4d8}.logo-group{gap:14px;padding-right:14px}.logo-marquee{mask-image:none;margin-top:20px}.clients{padding-top:32px;padding-bottom:32px}.topbar{padding:7px 0;overflow:hidden;direction:ltr}.benefit-track{display:flex;width:max-content;animation:benefit-roll 35s linear infinite}.benefit-group{display:flex;align-items:center;gap:42px;padding-right:42px;flex-shrink:0;white-space:nowrap;direction:rtl}.benefit-group span{font-size:12px}.benefit-group i{color:#d8ee9a;font-style:normal;font-size:10px}.topbar:hover .benefit-track,.topbar:focus .benefit-track{animation-play-state:paused}@keyframes benefit-roll{to{transform:translateX(-50%)}}
+.client-logo{width:142px;height:84px;padding:12px;border-radius:8px}.client-logo img{height:60px;width:118px;max-width:100%;object-fit:contain}.client-logo.dark-logo{background:#fff;border-color:#dce4d8}.logo-group{gap:14px;padding-right:14px}.logo-marquee{mask-image:none;margin-top:20px}.clients{padding-top:32px;padding-bottom:32px}.topbar{padding:7px 0;overflow:hidden;direction:ltr}.benefit-track{display:flex;width:max-content;animation:benefit-roll 35s linear infinite}.benefit-group{display:flex;align-items:center;gap:42px;padding-right:42px;flex-shrink:0;white-space:nowrap;direction:rtl}.benefit-group span{font-size:12px}.benefit-group i{color:#d8ee9a;font-style:normal;font-size:10px}.topbar:hover .benefit-track,.topbar:focus .benefit-track{animation-play-state:paused}@keyframes benefit-roll{to{transform:translateX(-50%)}}
 .pay-item{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:11px 7px;background:transparent;border:0;border-bottom:1px solid #e5e9df;color:#204740;text-align:right;font-size:12px;border-radius:5px}.pay-item i{font-style:normal;color:#7a9487;font-size:10px}.pay-item b{white-space:nowrap;font-size:12px;font-variant-numeric:tabular-nums;direction:ltr}.pay-item:hover,.pay-item:focus-visible,.pay-item[aria-pressed=true]{background:#e5eedc;color:#164f42}.deductions .pay-item:hover,.deductions .pay-item[aria-pressed=true]{background:#f4e9df}.pay-detail{border:1px solid #d2dfca;border-right:3px solid #6b9b80;background:#eff4e9;border-radius:8px;padding:15px;margin-top:20px;min-height:145px}.pay-detail strong{font-size:13px}.pay-detail p{font-size:12px!important;color:#45644f!important;margin:7px 0 0;line-height:1.9}.salary-net strong{font-size:26px}
 @media(max-width:760px){.client-logo{width:126px;height:78px;padding:10px}.client-logo img{width:106px;height:58px}.logo-group{gap:10px;padding-right:10px}.client-heading small{max-width:none}.benefit-group{gap:26px;padding-right:26px}.benefit-group span{font-size:11px}.pay-item,.pay-item b{font-size:11px}.pay-item{padding:10px 3px}.pay-detail{min-height:156px}.salary-net strong{font-size:23px}}
 @media(prefers-reduced-motion:reduce){.benefit-track{animation:none!important}.topbar{overflow-x:auto}.benefit-group[aria-hidden=true]{display:none}}
@@ -213,10 +213,10 @@ html[lang=en] .footer .brand .brand-arabic{color:#bfd2ca}
 html[lang=en] .footer .brand-tagline{color:#a7c0b9}
 /* Gentle concentric pulses behind the HR phone. */
 @media(prefers-reduced-motion:no-preference){
-  .phone-orbit,.phone-orbit:before,.phone-orbit:after{animation:phone-ring-pulse 2.8s ease-in-out infinite;transform-origin:center}
-  .phone-orbit:before{animation-delay:-.9s}
-  .phone-orbit:after{animation-delay:-1.8s}
-  @keyframes phone-ring-pulse{0%,100%{transform:scale(.92);opacity:.45}50%{transform:scale(1.09);opacity:1}}
+  .phone-orbit{animation:phone-ring-pulse 3.8s ease-in-out infinite;transform-origin:center}
+  .phone-orbit:before{animation:none}
+  .phone-orbit:after{animation:none}
+  @keyframes phone-ring-pulse{0%,100%{transform:scale(.98);opacity:.65}50%{transform:scale(1.045);opacity:1}}
 }
 /* Two-tone Arabic header wordmark, drawn from the logo palette. */
 html[lang=ar] .nav .brand-ar-bwsla{color:#111111}
@@ -285,5 +285,5 @@ html[lang=en] .nav .brand-digital{color:#396b9b}
   .hero-art .float.care{bottom:20px;left:26%;right:auto}
   .purpose-editorial .mission-panel h3 br{display:block}
 }
-.phone-orbit{border-color:#8acbb88c;box-shadow:0 0 20px #8acbb812}
-.phone-orbit:before,.phone-orbit:after{border-color:#8acbb866}
+.phone-orbit{border-color:#8acbb866;box-shadow:none}
+.phone-orbit:before,.phone-orbit:after{border-color:#8acbb84d}

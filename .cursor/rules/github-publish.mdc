@@ -1,0 +1,19 @@
+---
+description: Publish Digital Bwsla to GitHub Pages with cache bust whenever the user asks to publish
+alwaysApply: true
+---
+
+# GitHub publish (مع بمب الكاش)
+
+When the user says things like **انشر** / **ارفع** / **انشر تاني** / **publish**:
+
+1. Set git safe.directory for this repo via env (do not edit global git config):
+   `GIT_CONFIG_COUNT=1`, `GIT_CONFIG_KEY_0=safe.directory`, `GIT_CONFIG_VALUE_0=D:/websites/Digitalbwsla.com`
+2. Run `node build.cjs` so `site-config.cjs` `assetVersion` regenerates (`?v=` on CSS/JS/logos).
+3. `git add -A`, commit with a short message, push `origin main`.
+4. Use commit identity via `-c` only: `user.name=amr-bwsla`, `user.email=321912392+amr-bwsla@users.noreply.github.com`
+5. Reply with the preview URL including the new version:
+   `https://amr-bwsla.github.io/digital-bwsla/?v=<asset-version>`
+   Extract `<asset-version>` from `index.html` meta `asset-version`.
+
+Do **not** only push without rebuild. Cache bust is required every publish.
