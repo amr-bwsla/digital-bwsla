@@ -5,7 +5,7 @@
 /* Integrated orbital product labels */
 .hero-art .float{border-radius:100px;background:#f6faf4dd;border:1px solid #b9d3c5;box-shadow:0 10px 30px #28534a0c;padding:12px 20px;backdrop-filter:blur(10px);animation:orbital-drift 8s ease-in-out infinite}.hero-art .float:after{content:'';position:absolute;width:8px;height:8px;background:#5e9f8b;border:4px solid var(--paper);box-sizing:content-box;border-radius:50%;bottom:-11px;left:50%}.hero-art .float.hr{border-bottom:1px solid #b9d3c5}.hero-art .float.go{animation-delay:-2.6s}.hero-art .float.care{animation-delay:-5.2s}.hero-art .float img{height:41px}.orbit{animation:orbit-turn 55s linear infinite}.orbit:after{border-style:dashed}.hero-art .compass{animation:orbital-drift 8s ease-in-out infinite}@keyframes orbital-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}@keyframes orbit-turn{to{transform:rotate(335deg)}}
 /* Full-color, complete client collection */
-.clients{padding-top:45px;padding-bottom:50px}.client-heading h2{font-size:30px;margin:6px 0}.motion-toggle{background:transparent;color:var(--ink);border:1px solid #b6cac1;border-radius:40px;padding:9px 17px;font-size:12px}.logo-marquee{overflow:hidden;direction:ltr;margin-top:30px;mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent)}.logo-track{display:flex;width:max-content;animation:client-roll 140s linear infinite}.logo-group{display:flex;flex-shrink:0;gap:18px;padding-right:18px}.client-logo{width:195px;height:126px;flex-shrink:0;background:#fff;border:1px solid #dce4d8;border-radius:12px;padding:18px;display:grid;place-items:center}.client-logo img{width:100%;height:90px;object-fit:contain;filter:none;opacity:1}.logo-marquee:hover .logo-track,.logo-marquee.paused .logo-track,.logo-marquee:focus-within .logo-track{animation-play-state:paused}.all-clients{margin-top:18px;padding:10px 0;border:0}.all-clients summary{font-size:12px;color:var(--teal)}.all-logo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:24px}.all-logo-grid .client-logo{width:100%}@keyframes client-roll{to{transform:translateX(-50%)}}
+.clients{padding-top:45px;padding-bottom:50px}.client-heading h2{font-size:30px;margin:6px 0}.motion-toggle{background:transparent;color:var(--ink);border:1px solid #b6cac1;border-radius:40px;padding:9px 17px;font-size:12px}.logo-marquee{overflow:hidden;direction:ltr;margin-top:30px;mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent)}.logo-track{display:flex;width:max-content;animation:client-roll 140s linear infinite}.logo-group{display:flex;flex-shrink:0;gap:18px;padding-right:18px}.client-logo{width:195px;height:126px;flex-shrink:0;background:#fff;border:1px solid #dce4d8;border-radius:12px;padding:18px;display:grid;place-items:center}.client-logo img{width:100%;height:90px;object-fit:contain;filter:none;opacity:1}.logo-marquee.paused .logo-track,.logo-marquee:focus-visible .logo-track{animation-play-state:paused}@media(hover:hover) and (pointer:fine){.logo-marquee:hover .logo-track{animation-play-state:paused}}.all-clients{margin-top:18px;padding:10px 0;border:0}.all-clients summary{font-size:12px;color:var(--teal)}.all-logo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:24px}.all-logo-grid .client-logo{width:100%}@keyframes client-roll{to{transform:translateX(-50%)}}
 /* Real HR screen inside a CSS phone frame */
 .phone-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:590px;isolation:isolate}.phone-orbit{position:absolute;width:420px;height:420px;border:1px solid #73a59b40;border-radius:50%;z-index:-1}.phone-orbit:before,.phone-orbit:after{content:'';position:absolute;inset:35px;border:1px solid #83b2a62b;border-radius:50%}.phone-orbit:after{inset:-35px}.phone{position:relative;width:250px;margin:0;background:#142c32;border:7px solid #25464d;border-radius:36px;padding:4px;box-shadow:0 0 0 1px #668b88,18px 32px 60px #001b2455;transform:rotate(-5deg);overflow:hidden}.phone img{width:100%;height:auto;border-radius:24px}.phone-camera{position:absolute;z-index:2;top:9px;left:50%;transform:translateX(-50%);width:68px;height:14px;border-radius:20px;background:#17343c}.phone-caption{position:absolute;bottom:28px;left:0;background:#254d50ed;border:1px solid #6d9c8c60;border-radius:12px;padding:16px 21px;backdrop-filter:blur(12px)}.phone-caption strong{display:block;font-size:16px}.phone-caption small{display:block;font-size:11px;color:#c4d8ce}.phone-caption .eyebrow{font-size:10px;margin-bottom:4px}
 /* A tangible payroll story */
@@ -216,7 +216,7 @@ html[lang=en] .footer .brand-tagline{color:#a7c0b9}
   .phone-orbit,.phone-orbit:before,.phone-orbit:after{animation:phone-ring-pulse 2.8s ease-in-out infinite;transform-origin:center}
   .phone-orbit:before{animation-delay:-.9s}
   .phone-orbit:after{animation-delay:-1.8s}
-  @keyframes phone-ring-pulse{0%,100%{transform:scale(.97);opacity:.55}50%{transform:scale(1.035);opacity:1}}
+  @keyframes phone-ring-pulse{0%,100%{transform:scale(.92);opacity:.45}50%{transform:scale(1.09);opacity:1}}
 }
 /* Two-tone Arabic header wordmark, drawn from the logo palette. */
 html[lang=ar] .nav .brand-ar-bwsla{color:#111111}
@@ -275,3 +275,15 @@ html[lang=en] .nav .brand-digital{color:#396b9b}
   .footer .footer-contact .contact-icon{width:15px;height:15px;flex-basis:15px;margin-top:4px}
   .footer .footer-contact bdi{min-width:0;overflow-wrap:anywhere}
 }
+
+/* Balanced mobile product triangle with an unobstructed centre emblem. */
+@media(max-width:760px){
+  .hero-art .float{width:48%;min-width:0;gap:8px;padding:10px 12px;min-height:74px}
+  .hero-art .float img{width:30px;height:38px;flex-shrink:0}
+  .hero-art .float.hr{top:0;right:0;left:auto;min-width:0}
+  .hero-art .float.go{top:0;left:0;right:auto}
+  .hero-art .float.care{bottom:20px;left:26%;right:auto}
+  .purpose-editorial .mission-panel h3 br{display:block}
+}
+.phone-orbit{border-color:#8acbb88c;box-shadow:0 0 20px #8acbb812}
+.phone-orbit:before,.phone-orbit:after{border-color:#8acbb866}

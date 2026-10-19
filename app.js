@@ -36,7 +36,11 @@ function showPayDetail(id){
 }
 document.querySelectorAll('[data-attendance-impact]').forEach(button=>button.addEventListener('click',()=>showPayDetail(button.dataset.attendanceImpact)));
 document.querySelectorAll('[data-pay]').forEach(button=>{['pointerenter','focus','click'].forEach(event=>button.addEventListener(event,()=>showPayDetail(button.dataset.pay)));});
-marquee?.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')setLogoMotion(!marquee.classList.contains('paused'));});
+// Touch scrolling must not leave the ribbon permanently paused.
+marquee?.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')setLogoMotion(true);});
+for(const event of ['pointerup','pointercancel','lostpointercapture']){
+  window.addEventListener(event,()=>setLogoMotion(reducedMotion.matches));
+}
 const nav=document.querySelector('.nav-links');
 toggle?.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);});
 nav?.addEventListener('click',e=>{if(e.target.closest('a')){toggle.setAttribute('aria-expanded','false');nav.classList.remove('open');}});
