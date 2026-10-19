@@ -15,6 +15,7 @@ const captions = {
   'clinic-welcome': 'تواصل فريق الاستقبال مع أحد زوار العيادة'
 };
 function photo(name, eager=false) {
+  if(name==='support-desk'||name==='cairo-workspace') return `<img src="assets/media/${name}-branded-1280.webp" srcset="assets/media/${name}-branded-640.webp 640w, assets/media/${name}-branded-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="${name==='support-desk'?853:720}" alt="${captions[name]}" loading="${eager?'eager':'lazy'}" decoding="async">`;
   if(name==='compass-workspace') return `<img src="assets/media/compass-workspace-emblem-1280.webp" srcset="assets/media/compass-workspace-emblem-640.webp 640w, assets/media/compass-workspace-emblem-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="720" alt="شعار بوصلة رقمية على اللابتوب في مساحة عمل" loading="${eager?'eager':'lazy'}" decoding="async">`;
   const portrait=['hr-team','hr-mobile-concept'].includes(name);
   return `<img src="assets/media/${name}-1280.webp" srcset="assets/media/${name}-640.webp 640w, assets/media/${name}-1280.webp ${portrait?'1122':'1280'}w" sizes="(max-width: 760px) 92vw, 46vw" width="${portrait?1122:1280}" height="${portrait?1402:name==='support-desk'?853:720}" alt="${captions[name]}" loading="${eager?'eager':'lazy'}" decoding="async">`;
