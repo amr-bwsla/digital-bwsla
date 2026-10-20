@@ -124,3 +124,12 @@ document.querySelector('#demo-form')?.addEventListener('submit',e=>{e.preventDef
     if(home)home.focus({preventScroll:true});
   });
 })();
+
+// Product descriptions can be opened by touch or keyboard as well as hover.
+const heroProducts=document.querySelectorAll('button.float');
+heroProducts.forEach(button=>button.addEventListener('click',()=>{
+const opening=button.getAttribute('aria-expanded')!=='true';
+heroProducts.forEach(item=>item.setAttribute('aria-expanded',String(item===button&&opening)));
+}));
+document.addEventListener('click',event=>{if(!event.target.closest('button.float'))heroProducts.forEach(item=>item.setAttribute('aria-expanded','false'));});
+document.addEventListener('keydown',event=>{if(event.key==='Escape')heroProducts.forEach(item=>item.setAttribute('aria-expanded','false'));});

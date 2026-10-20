@@ -1,5 +1,7 @@
 // Editorial imagery is illustrative; actual product screenshots stay separate.
 const captions = {
+  'clinic-refined': 'فريق طبي يتابع إدارة العيادة في بيئة عمل احترافية',
+  'pos-soft-background': 'تجربة دفع وإدارة مبيعات داخل مقهى',
   'focused-work': 'مساحة عمل هادئة لمراجعة الأعمال',
   'clinic-professional': 'فريق طبي يتابع إدارة العيادة في بيئة عمل احترافية',
   'hr-team': 'فريق عمل يتابع بيانات الموارد البشرية',
@@ -15,8 +17,8 @@ const captions = {
   'clinic-welcome': 'تواصل فريق الاستقبال مع أحد زوار العيادة'
 };
 function photo(name, eager=false) {
-  if(name==='support-desk'||name==='cairo-workspace') return `<img src="assets/media/${name}-branded-1280.webp" srcset="assets/media/${name}-branded-640.webp 640w, assets/media/${name}-branded-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="${name==='support-desk'?853:720}" alt="${captions[name]}" loading="${eager?'eager':'lazy'}" decoding="async">`;
-  if(name==='compass-workspace') return `<img src="assets/media/compass-workspace-emblem-1280.webp" srcset="assets/media/compass-workspace-emblem-640.webp 640w, assets/media/compass-workspace-emblem-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="720" alt="شعار بوصلة رقمية على اللابتوب في مساحة عمل" loading="${eager?'eager':'lazy'}" decoding="async">`;
+  if(name==='support-desk'||name==='cairo-workspace') return `<img src="assets/media/${name==='support-desk'?'support-desk-macbook':'cairo-workspace-mug'}-1280.webp" srcset="assets/media/${name==='support-desk'?'support-desk-macbook':'cairo-workspace-mug'}-640.webp 640w, assets/media/${name==='support-desk'?'support-desk-macbook':'cairo-workspace-mug'}-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="${name==='support-desk'?853:720}" alt="${captions[name]}" loading="${eager?'eager':'lazy'}" decoding="async">`;
+  if(name==='compass-workspace') return `<img src="assets/media/workspace-macbook-1280.webp" srcset="assets/media/workspace-macbook-640.webp 640w, assets/media/workspace-macbook-1280.webp 1280w" sizes="(max-width:760px) 92vw, 46vw" width="1280" height="720" alt="لابتوب ماك بوك على مكتب في مساحة عمل بإضاءة طبيعية" loading="${eager?'eager':'lazy'}" decoding="async">`;
   const portrait=['hr-team','hr-mobile-concept'].includes(name);
   return `<img src="assets/media/${name}-1280.webp" srcset="assets/media/${name}-640.webp 640w, assets/media/${name}-1280.webp ${portrait?'1122':'1280'}w" sizes="(max-width: 760px) 92vw, 46vw" width="${portrait?1122:1280}" height="${portrait?1402:name==='support-desk'?853:720}" alt="${captions[name]}" loading="${eager?'eager':'lazy'}" decoding="async">`;
 }
@@ -33,9 +35,9 @@ module.exports=function(file,body){
   if(file==='index.html'){
     // Give each product and service a contextual photo without replacing its identity.
     body=body.replaceAll('<article class="product-card">','<article class="product-card product-card-photo">');
-    body=body.replace('<article class="product-card product-card-photo">','<article class="product-card product-card-photo">'+photo('clinic-professional'));
+    body=body.replace('<article class="product-card product-card-photo">','<article class="product-card product-card-photo">'+photo('clinic-refined'));
     const go='<article class="product-card product-card-photo"><div><span class="tag">للمتاجر';
-    body=body.replace(go,'<article class="product-card product-card-photo">'+photo('pos-checkout')+'<div><span class="tag">للمتاجر');
+    body=body.replace(go,'<article class="product-card product-card-photo">'+photo('pos-soft-background')+'<div><span class="tag">للمتاجر');
     body=body.replace('<section class="section services"',story('focused-work','صورة أوضح. قرار أسهل.','وقت أقل في التفاصيل.<br>ومساحة أكبر لفريقك.','من تنظيم بيانات الموظفين إلى متابعة نشاطك، اختار الأدوات التي تساعدك على رؤية الصورة كاملة.','contact.html','خلّينا نفهم احتياجك')+'<section class="section services"');
   }
   const stories={
@@ -63,7 +65,7 @@ module.exports=function(file,body){
   }
   if(file==='studio.html'||file==='it.html'){
     const studio=file==='studio.html';
-    if(studio) body=body.replace(figure('web-studio',true),`<figure class="editorial-photo"><img src="assets/media/web-design-concepts.webp" alt="تصوّر لتصميم موقع شركة ومتجر إلكتروني" width="1200" height="800" decoding="async"><figcaption>تصوّرات لتصميم المواقع والمتاجر</figcaption></figure>`);
+    if(studio) body=body.replace(figure('web-studio',true),`<figure class="editorial-photo"><img src="assets/media/web-design-concepts.webp" alt="تصوّر لتصميم موقع شركة ومتجر إلكتروني" width="1200" height="800" decoding="async"><figcaption>أفضل التصميمات للمواقع الإلكترونية والمتاجر</figcaption></figure>`);
     const items=studio?[
       ['web-corporate-concept','موقع شركة بهوية واضحة','تصميم يعرّف بخدماتك، ويقود الزائر بسهولة لخطوة التواصل.'],
       ['web-store-concept','متجر يهتم بتجربة الشراء','عرض جذاب للمنتجات وتجربة متناسقة على الكمبيوتر والموبايل.']
@@ -74,5 +76,9 @@ module.exports=function(file,body){
     const gallery=`<section class="wrap service-gallery" id="service-gallery"><div class="section-head"><div><span class="eyebrow">${studio?'أفكار تناسب نشاطك':'رعاية تقنية متكاملة'}</span><h2>${studio?'لكل مشروع، تجربة تخصّه.':'من أجهزة الفريق، إلى شبكة الشركة.'}</h2></div><p>${studio?'تصوّرات تصميم لمواقع ومتاجر احترافية. نطوّر مشروعك بهويتك ومتطلباتك وبأسعار تنافسية.':'دعم احترافي يجمع احتياجات التشغيل في عقد واضح يناسب حجم شركتك.'}</p></div><div class="service-gallery-grid">${items.map(([id,title,desc])=>`<figure><img src="assets/media/${id}.webp" alt="${title}" width="1200" height="800" loading="lazy" decoding="async"><figcaption><h3>${title}</h3><p>${desc}</p></figcaption></figure>`).join('')}</div></section>`;
     body=body.replace('<section class="wrap contact"',gallery+'<section class="wrap contact"');
   }
+  const genericCaption='<figcaption>تصوّر بصري لبيئة العمل</figcaption>';
+  if(file==='hr.html'||file==='it.html') body=body.replace(genericCaption,'');
+  if(file==='care.html') body=body.replace(genericCaption,'<figcaption>حل ينظّم عمليات منشأتك الطبية دون ورقيات.</figcaption>');
+  if(file==='contact.html') body=body.replace(genericCaption,'<figcaption>اطلب ديمو، وسيتواصل معك فريقنا لتحديد الموعد المناسب.</figcaption>');
   return body;
 };

@@ -78,7 +78,7 @@
 .hr-screen-brand{direction:ltr}.hr-screen-crop{aspect-ratio:600/1250;overflow:hidden;border-radius:0 0 23px 23px}.care-device .hr-screen-crop .hr-actual-screen{width:100%;height:auto;max-width:none;border-radius:0;transform:translateY(-5.3030303%)}.hr-device-stage{position:relative;isolation:isolate;overflow:hidden;padding:38px 24px;border-radius:28px;background:radial-gradient(ellipse at 25% 20%,#e3edcf 0,transparent 52%),linear-gradient(145deg,#e8f0e4,#dcebe5 55%,#c9dfdc);border:1px solid #d3e1d6}.hr-device-stage:before,.hr-device-stage:after{content:'';position:absolute;z-index:-1;border:1px solid #8bb2a65c;border-radius:50%;width:360px;height:360px;left:-170px;top:40px}.hr-device-stage:after{width:440px;height:440px;left:auto;right:-250px;top:auto;bottom:-60px}.hr-device-stage .hr-attendance-device{position:relative;max-width:100%;box-shadow:15px 22px 40px #183f432b}.hr-app-visual figcaption{margin-top:14px}@media(max-width:480px){.hr-device-stage{padding:28px 18px;border-radius:20px}}
 .hr-screen-brand{justify-content:space-between;gap:8px;padding:12px 8px}.hr-screen-logo{display:flex;align-items:center;gap:5px;direction:ltr;flex-shrink:0}.hr-screen-logo strong{font-size:12px;white-space:nowrap}.care-device .hr-screen-logo img{width:22px;height:28px}.hr-screen-employee{display:flex;align-items:center;gap:5px;min-width:0;text-align:right}.care-device .hr-screen-employee img{width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0}.hr-screen-employee strong{display:block;font-size:9px;line-height:1.6}.hr-screen-employee small{display:block;font-size:7px;line-height:1.6;color:#6b8073}
 /* English product lockups: icon immediately left of B, with the group aligned to the RTL content. */
-.product-mark{direction:ltr;justify-content:flex-end}.product-mark>b{direction:ltr;unicode-bidi:isolate}.hero-art .float{direction:ltr}.hero-art .float>div{direction:rtl;text-align:right}.hero-art .float b{direction:ltr;unicode-bidi:isolate}
+.product-mark{direction:ltr;justify-content:flex-end}.product-mark>b{direction:ltr;unicode-bidi:isolate}.hero-art .float{direction:ltr}.hero-art .float>.float-copy{direction:rtl;text-align:right}.hero-art .float b{direction:ltr;unicode-bidi:isolate}
 /* Shared scroll entrances preserve existing transforms and never hide content at rest. */
 @media(prefers-reduced-motion:no-preference){
   .scroll-reveal{animation:content-arrive .55s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms) both}
@@ -173,12 +173,12 @@
 html[dir=rtl] body{direction:rtl}html[dir=ltr] body{direction:ltr}body{text-align:start}
 .pay-item,.attendance-impacts button,.attendance-scroll button,.employee-meta,.field,.form-note,.pay-detail,.attendance-explanation{text-align:start}
 .footer .footer-contact,.contact-details>.footer-contact{direction:inherit;text-align:start}
-.hero-art .float>div{direction:inherit;text-align:start}
+.hero-art .float>.float-copy{direction:inherit;text-align:start}
 html[lang=en] body{font-family:Arial,Helvetica,sans-serif;line-height:1.7}
 html[lang=en] h1,html[lang=en] h2,html[lang=en] h3{letter-spacing:-.025em}
 html[lang=en] .brand strong{font-size:22px;white-space:nowrap}html[lang=en] .brand small{letter-spacing:2px}
 html[lang=en] .hero h1{line-height:1.2;margin-bottom:25px}html[lang=en] .hero .lead{line-height:1.7}
-html[lang=en] .product-mark{justify-content:flex-start}html[lang=en] .hero-art .float>div{direction:ltr;text-align:left}
+html[lang=en] .product-mark{justify-content:flex-start}html[lang=en] .hero-art .float>.float-copy{direction:ltr;text-align:left}
 html[lang=en] .wa-dialog{direction:ltr;text-align:left}html[lang=en] .wa-form textarea,html[lang=en] .wa-send{font-family:Arial,Helvetica,sans-serif}
 html[lang=en] .attendance-scroll th,html[lang=en] .attendance-scroll td{text-align:start}html[lang=en] .attendance-scroll td[dir=ltr]{text-align:center}
 html[lang=en] .detail-hero h1{line-height:1.25}html[lang=en] .hr-screen-employee{text-align:left}html[lang=en] .arrow{transform:scaleX(-1)}
@@ -186,7 +186,7 @@ html[lang=en] .field input,html[lang=en] .field select,html[lang=en] .field text
 @media(min-width:761px) and (max-width:1100px){.nav .nav-inner{gap:16px}.nav .nav-links{gap:12px}.nav .nav-links a{font-size:12px}.header-tools .header-socials{display:none}.nav .brand strong,html[lang=en] .nav .brand strong{font-size:18px}}
 @media(max-width:760px){.nav .nav-inner{grid-template-columns:minmax(0,1fr) auto auto;height:77px;gap:10px}.nav .nav-links{display:none;position:absolute;inset-inline:0;top:77px;white-space:normal;text-align:start;justify-self:stretch}.nav .nav-links.open{display:flex}.nav .menu-toggle{display:block;width:40px;height:40px;padding:0;justify-self:end}.header-tools{gap:0}.header-tools .header-socials{display:none}.language-switch{min-width:58px;min-height:36px;padding:5px 8px;font-size:11px}.nav .brand strong,html[lang=en] .nav .brand strong{font-size:18px}.nav .brand small,html[lang=en] .nav .brand small{font-size:7px;letter-spacing:1.5px}.nav .brand img{width:32px;height:40px}.nav .brand{gap:8px}html[lang=en] .hero h1{font-size:clamp(32px,7.5vw,48px)}html[lang=en] .hero-art .float small{font-size:9px}}
 @media(max-width:360px){.nav .brand strong,html[lang=en] .nav .brand strong{font-size:15px}.nav .brand small{letter-spacing:1px}.nav .nav-inner{gap:7px}}
-html[lang=ar] .hero-art .float>div{direction:rtl;text-align:right}html[lang=en] .payslip .employee-meta dd{direction:ltr;text-align:left}html[lang=en] .benefit-group{direction:ltr}
+html[lang=ar] .hero-art .float>.float-copy{direction:rtl;text-align:right}html[lang=en] .payslip .employee-meta dd{direction:ltr;text-align:left}html[lang=en] .benefit-group{direction:ltr}
 /* English brand lockup and balanced headline. */
 html[lang=en] .brand .brand-arabic,html[lang=en] .nav .brand .brand-arabic{font-family:Cairo,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0;line-height:1.7;text-align:left}
 html[lang=en] .hero-grid>div:first-child{container-type:inline-size}html[lang=en] .hero h1{font-size:clamp(28px,8cqi,48px);line-height:1.3}html[lang=en] .hero h1 em{font-size:clamp(21px,7.3cqi,44px);white-space:nowrap}
@@ -287,3 +287,112 @@ html[lang=en] .nav .brand-digital{color:#396b9b}
 }
 .phone-orbit{border-color:#8acbb866;box-shadow:none}
 .phone-orbit:before,.phone-orbit:after{border-color:#8acbb84d}
+
+/* Product details and complementary services. */
+.hero-visual{min-width:0}
+.hero-art button.float{font-family:inherit;color:var(--ink);text-align:inherit}
+.hero-art .float small{display:none}
+.hero-art .float[aria-expanded=true] small,.hero-art .float:focus-visible small{display:block}
+.hero-services{text-align:center;margin:18px auto 0;max-width:470px;border-top:1px solid var(--line);padding-top:16px}
+.hero-services>p{font-size:12px;color:var(--muted);margin:0 0 12px}
+.hero-service-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hero-service-links a{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 4px;border-radius:10px;font-size:12px;font-weight:700;line-height:1.6}
+.hero-service-links svg{width:24px;height:24px;color:var(--teal)}
+.hero-service-links a:hover{background:#eaf0e5}
+@media(hover:hover){.hero-art .float:hover small{display:block}}
+@media(max-width:760px){
+.hero-art .float b>span{display:block;line-height:1.4;text-transform:uppercase}
+.hero-art .float b{text-align:center}
+.hero-art .float>.float-copy{flex:1}
+.hero-art .float small{position:absolute;top:calc(100% + 13px);left:50%;transform:translateX(-50%);width:max-content;max-width:210px;background:var(--ink);color:white;padding:7px 10px;border-radius:8px;text-align:center;font-size:11px;box-shadow:0 5px 15px #123b4015}
+.hero-art .float:focus-visible,.hero-art .float[aria-expanded=true]{z-index:4}
+.hero-services{margin-top:0}
+.hero-service-links a{font-size:11px}
+}
+
+/* Six compact nodes share the compass instead of extending the hero. */
+.hero-art .hero-services{position:absolute;inset:0;margin:0;padding:0;border:0;max-width:none;pointer-events:none}
+.hero-services>p{display:none}
+.hero-art .hero-service-links{display:block}
+.hero-art .hero-service-links a{position:absolute;width:130px;min-height:62px;pointer-events:auto;background:#f6faf4ed;border:1px solid #b9d3c5;border-radius:18px;gap:4px;padding:8px;font-size:11px;z-index:2}
+.hero-art .hero-service-links a:nth-child(1){right:0;top:calc(50% - 31px)}
+.hero-art .hero-service-links a:nth-child(2){left:0;top:calc(50% - 31px)}
+.hero-art .hero-service-links a:nth-child(3){left:10%;bottom:35px}
+.hero-art .float{width:150px;min-width:0;min-height:62px;padding:9px 12px;gap:9px}
+.hero-art .float.hr{top:25px;right:10%;left:auto;min-width:0}
+.hero-art .float.go{top:25px;left:10%;right:auto}
+.hero-art .float.care{bottom:35px;right:10%;left:auto}
+.hero-art .float b{font-size:13px}
+.hero-art .float img{width:28px;height:34px}
+.hero-art .float small{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);width:max-content;max-width:190px;background:var(--ink);color:white;padding:6px 9px;border-radius:8px;text-align:center;font-size:11px}
+.hero-art .float:hover,.hero-art .float[aria-expanded=true]{z-index:4}
+@media(max-width:760px){
+ .hero-art .float{width:112px;min-height:58px;padding:8px 10px;gap:7px}
+ .hero-art .float.hr{right:8%;min-width:0}
+ .hero-art .float.go{left:8%}
+ .hero-art .float.care{right:8%;left:auto}
+ .hero-art .float b{font-size:12px}
+ .hero-art .float img{width:25px;height:30px}
+ .hero-art .hero-service-links a{width:100px;min-height:58px;font-size:10px;padding:7px 4px}
+ .hero-art .hero-service-links a:nth-child(3){left:8%}
+ .hero-art .hero-service-links svg{width:20px;height:20px}
+ .hero-art .compass{width:135px;height:135px;border-width:7px}
+ .hero-art .compass img{height:78px}
+}
+@media(max-width:380px){
+ .hero-art .float{width:100px}
+ .hero-art .hero-service-links a{width:82px;font-size:9px}
+ .hero-art .compass{width:115px;height:115px}
+ .hero-art .compass img{height:65px}
+}
+
+/* One additional-solutions card keeps the compass uncluttered. */
+.hero-art .float.more{top:auto;bottom:35px;left:10%;right:auto}
+.hero-art .float.more small{top:auto;bottom:calc(100% + 12px);min-width:150px;line-height:1.8}
+.hero-art .float.more small>span{display:block}
+@media(max-width:760px){
+ .hero-art .float.more{left:8%}
+ .hero-art .float.more b{font-size:12px;line-height:1.5}
+}
+
+
+
+/* Slightly offset compass cards retain clear space around the centre. */
+.hero-art .float.hr{top:12px;right:5%}
+.hero-art .float.go{top:55px;left:2%}
+.hero-art .float.care{bottom:57px;right:2%}
+.hero-art .float.more{bottom:20px;left:9%}
+@media(max-width:760px){
+ .hero-art .float.hr{top:8px;right:7%}
+ .hero-art .float.go{top:43px;left:2%}
+ .hero-art .float.care{bottom:53px;right:1%}
+ .hero-art .float.more{bottom:22px;left:7%}
+}
+
+/* Stagger cards across orbit depths while reserving the central logo area. */
+.hero-art .float.hr{top:20px;right:1%}
+.hero-art .float.go{top:calc(50% - 135px);left:0}
+.hero-art .float.care{bottom:24px;right:0}
+.hero-art .float.more{bottom:calc(50% - 170px);left:12%}
+@media(max-width:760px){
+ .hero-art .float.hr{top:8px;right:2%}
+ .hero-art .float.go{top:calc(50% - 100px);left:0}
+ .hero-art .float.care{bottom:22px;right:1%}
+ .hero-art .float.more{bottom:calc(50% - 130px);left:17%}
+}
+@media(max-width:380px){
+ .hero-art .float.more{left:10%}
+}
+
+/* Bring the outer cards slightly closer to the compass. */
+.hero-art .float.hr{top:38px;right:6%}
+.hero-art .float.care{bottom:42px;right:5%}
+@media(max-width:760px){
+ .hero-art .float.hr{top:24px;right:6%}
+ .hero-art .float.care{bottom:38px;right:5%}
+}
+
+/* Bring Care onto its orbit and allow longer service descriptions to wrap. */
+.hero-art .float.care{bottom:54px;right:9%}
+.hero-art .float.more small{width:230px;max-width:230px;white-space:normal}
+@media(max-width:760px){.hero-art .float.care{bottom:50px;right:9%}.hero-art .float.more small{width:210px;max-width:210px}}
