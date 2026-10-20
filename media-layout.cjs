@@ -70,15 +70,21 @@ module.exports=function(file,body){
       ['web-corporate-concept','موقع شركة بهوية واضحة','تصميم يعرّف بخدماتك، ويقود الزائر بسهولة لخطوة التواصل.'],
       ['web-store-concept','متجر يهتم بتجربة الشراء','عرض جذاب للمنتجات وتجربة متناسقة على الكمبيوتر والموبايل.']
     ]:[
-      ['it-maintenance','صيانة أجهزة فريقك','متابعة دورية للأجهزة ومعالجة الأعطال وفق نطاق العقد المتفق عليه.'],
-      ['it-network','شبكة منظّمة تدعم شغلك','تجهيز ومتابعة الشبكات والاتصال بما يناسب بيئة عمل شركتك.']
+      ['it-software-support','دعم البرامج وصيانة الأجهزة','دعم البرامج وأنظمة التشغيل وتحديثها ومعالجة مشكلاتها، مع صيانة الأجهزة عبر مركز الصيانة لدينا وفق نطاق الخدمة المتفق عليه.'],
+      ['it-network','شبكة منظّمة تدعم شغلك','نؤسّس شبكة شركتك من البداية للنهاية: من معاينة الموقع وتخطيط الشبكة وتمديد الكابلات وتنظيمها، إلى تركيب وإعداد أجهزة الشبكة ونقاط الواي فاي وربط أجهزة فريقك. نختبر الاتصال والتغطية قبل التسليم، ونوفّر المتابعة والصيانة وفق نطاق الخدمة المتفق عليه، مع مراعاة احتياجات شركتك وتوسّعها.']
     ];
-    const gallery=`<section class="wrap service-gallery" id="service-gallery"><div class="section-head"><div><span class="eyebrow">${studio?'أفكار تناسب نشاطك':'رعاية تقنية متكاملة'}</span><h2>${studio?'لكل مشروع، تجربة تخصّه.':'من أجهزة الفريق، إلى شبكة الشركة.'}</h2></div><p>${studio?'تصوّرات تصميم لمواقع ومتاجر احترافية. نطوّر مشروعك بهويتك ومتطلباتك وبأسعار تنافسية.':'دعم احترافي يجمع احتياجات التشغيل في عقد واضح يناسب حجم شركتك.'}</p></div><div class="service-gallery-grid">${items.map(([id,title,desc])=>`<figure><img src="assets/media/${id}.webp" alt="${title}" width="1200" height="800" loading="lazy" decoding="async"><figcaption><h3>${title}</h3><p>${desc}</p></figcaption></figure>`).join('')}</div></section>`;
+    const gallery=`<section class="wrap service-gallery" id="service-gallery"><div class="section-head"><div><span class="eyebrow">${studio?'أفكار تناسب نشاطك':'رعاية تقنية متكاملة'}</span><h2>${studio?'لكل مشروع، تجربة تخصّه.':'ركّز في شغلك، وسيب التقنية علينا.'}</h2></div><p>${studio?'تصوّرات تصميم لمواقع ومتاجر احترافية. نطوّر مشروعك بهويتك ومتطلباتك وبأسعار تنافسية.':'عقود صيانة ودعم تقني تناسب شركتك، تجمع متابعة البرامج والأجهزة والشبكات في خدمة واحدة. نساعدك تقلّل الأعطال وتخفّف أعباء المتابعة عن فريقك، بنطاق خدمة واضح يناسب احتياجاتك.'}</p></div><div class="service-gallery-grid">${items.map(([id,title,desc])=>`<figure><img src="assets/media/${id}.webp" alt="${title}" width="1200" height="800" loading="lazy" decoding="async"><figcaption><h3>${title}</h3><p>${desc}</p></figcaption></figure>`).join('')}</div></section>`;
     body=body.replace('<section class="wrap contact"',gallery+'<section class="wrap contact"');
   }
   const genericCaption='<figcaption>تصوّر بصري لبيئة العمل</figcaption>';
   if(file==='hr.html'||file==='it.html') body=body.replace(genericCaption,'');
   if(file==='care.html') body=body.replace(genericCaption,'<figcaption>حل ينظّم عمليات منشأتك الطبية دون ورقيات.</figcaption>');
   if(file==='contact.html') body=body.replace(genericCaption,'<figcaption>اطلب ديمو، وسيتواصل معك فريقنا لتحديد الموعد المناسب.</figcaption>');
+  if(file==='index.html'){
+    const services=body.match(/<section class="section services" id="services">[\s\S]*?<\/section>/);
+    const purpose='<section class="section purpose-section" id="purpose">';
+    if(!services||!body.includes(purpose))throw new Error('Missing home sections');
+    body=body.replace(services[0],'').replace(purpose,services[0]+purpose);
+  }
   return body;
 };

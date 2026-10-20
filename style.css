@@ -396,3 +396,6 @@ html[lang=en] .nav .brand-digital{color:#396b9b}
 .hero-art .float.care{bottom:54px;right:9%}
 .hero-art .float.more small{width:230px;max-width:230px;white-space:normal}
 @media(max-width:760px){.hero-art .float.care{bottom:50px;right:9%}.hero-art .float.more small{width:210px;max-width:210px}}
+
+.hr-journey .mobile-break{display:none}
+@media(max-width:760px){.hr-journey{align-items:flex-start}.hr-journey:before{flex-shrink:0;margin-top:.7em}.hr-journey .mobile-break{display:block}.hr-journey>span{line-height:1.9}}
